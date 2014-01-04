@@ -3,6 +3,7 @@
     float:right;
     width:30%;
     margin-right:2%;
+    margin-left:2%;
 }
 
 /*分页器*/
@@ -43,8 +44,11 @@
 /*介绍对齐*/
 .container{
     margin-left:2%;
+    margin-right:2%;
 }
 
 .user-head{
 display:inline-table;
 }
+
+

@@ -69,33 +69,17 @@
             </div><!-- /.navbar-collapse -->
         </nav>
 
-        <ul class="nav nav-pills nav-stacked right-nav box">
-            <li class="active">
-                <a href="#">
-                    <span class="badge pull-right">42</span>
-                    Home
-                </a>
-            </li>
-            <li >
-                <a href="#">
-                    <span class="badge pull-right">42</span>
-                    Home
-                </a>
-            </li>
-            <li >
-                <a href="#">
-                    <span class="badge pull-right">42</span>
-                    Home
-                </a>
-            </li>
-        </ul>
-
+ <ul class="nav nav-pills nav-stacked right-nav box">
+<%- partial("li",listitem)%>  
+     </ul>
 
         <div id="container" class="container">
+            <div id="containbody">
             <%- body %>
+            </div>
             <hr />
             <footer>
-                <p><a href="http://www.ceclinux.org/" target="_blank">ceclinux</a> 2012</p>
+                <p><a href="http://www.ceclinux.org/" target="_blank">Cecil</a> 2014</p>
             </footer>
         </div>
     </body>

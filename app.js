@@ -4,7 +4,7 @@
  */
 
 var express = require('express');
-var MongoStore = require('connect-mongo');
+var MongoStore = require('connect-mongo')(express);
 var settings = require('./settings');
 var routes = require('./routes');
 var partials = require('express-partials');
@@ -27,6 +27,9 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.bodyParser());
+app.use(express.cookieParser());
+app.use(express.session({secret:settings.cookieSecret,store:new MongoStore({db:settings.db})}));
 
 // development only
 if ('development' == app.get('env')) {
