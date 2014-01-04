@@ -1,0 +1,10 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Connection	db.js	/^var Connection = require('mongodb').Connection;$/;"	v
+Db	db.js	/^var Db = require('mongodb').Db;$/;"	v
+Server	db.js	/^var Server = require('mongodb').Server;$/;"	v
+settings	db.js	/^var settings = require('..\/settings');$/;"	v
