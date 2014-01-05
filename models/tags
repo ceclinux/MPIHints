@@ -7,4 +7,10 @@
 Connection	db.js	/^var Connection = require('mongodb').Connection;$/;"	v
 Db	db.js	/^var Db = require('mongodb').Db;$/;"	v
 Server	db.js	/^var Server = require('mongodb').Server;$/;"	v
+User	user.js	/^function User (user) {$/;"	c
+User.get	user.js	/^User.get = function get (username,callback) {$/;"	f
+User.save	user.js	/^User.prototype.save = function save (callback) {$/;"	m
+User.var.user.name	user.js	/^        name: this.name,$/;"	p
+get	user.js	/^User.get = function get (username,callback) {$/;"	f
+mongodb	user.js	/^var mongodb = require('.\/db');$/;"	v
 settings	db.js	/^var settings = require('..\/settings');$/;"	v
