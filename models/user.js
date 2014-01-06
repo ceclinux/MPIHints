@@ -4,6 +4,7 @@ function User (user) {
     this.name = user.name;
     this.password = user.password;
 };
+//这样可以直接返回User对象哦
 module.exports = User;
 
 User.prototype.save = function save (callback) {
@@ -23,13 +24,13 @@ User.prototype.save = function save (callback) {
                 mongodb.close();
                 return callback(err);
             }
+
             collection.ensureIndex('name',{unique:true});
 
             collection.insert(user,{safe:true},function  (err,user) {
                 mongodb.close();
                 callback(err,user);
             });
-            // body...
         });
     })
 };
@@ -40,7 +41,7 @@ User.get = function get (username,callback) {
             return callback(err);
         }
 
-        db.collection('user',function  (err,collection) {
+        db.collection('users',function  (err,collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);

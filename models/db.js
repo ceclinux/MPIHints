@@ -1,3 +1,6 @@
+//mongodb配置文件
+
+//http://mongodb.github.io/node-mongodb-native/
 var settings = require('../settings');
 var Db = require('mongodb').Db;
 var Connection = require('mongodb').Connection;

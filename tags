@@ -860,6 +860,7 @@ MemoryStore.set	node_modules/express/node_modules/connect/lib/middleware/session
 Mime	node_modules/express/node_modules/send/node_modules/mime/mime.js	/^function Mime() {$/;"	c
 Mime.define	node_modules/express/node_modules/send/node_modules/mime/mime.js	/^Mime.prototype.define = function (map) {$/;"	m
 MinKey	node_modules/mongodb/node_modules/bson/lib/bson/min_key.js	/^function MinKey() {$/;"	f
+Mongo	app.js	/^var Mongo = require('connect-mongo');$/;"	v
 MongoAuthProcess	node_modules/mongodb/lib/mongodb/auth/mongodb_gssapi.js	/^var MongoAuthProcess = null;$/;"	v
 MongoAuthProcess	node_modules/mongodb/lib/mongodb/auth/mongodb_sspi.js	/^var MongoAuthProcess = null;$/;"	v
 MongoAuthProcess	node_modules/mongodb/node_modules/kerberos/lib/auth_processes/mongodb.js	/^MongoAuthProcess.prototype.init = function(username, password, callback) {$/;"	c
@@ -879,7 +880,7 @@ MongoReply.error_message	node_modules/mongodb/lib/mongodb/responses/mongo_reply.
 MongoReply.is_error	node_modules/mongodb/lib/mongodb/responses/mongo_reply.js	/^MongoReply.prototype.is_error = function(){$/;"	m
 MongoReply.parseBody	node_modules/mongodb/lib/mongodb/responses/mongo_reply.js	/^MongoReply.prototype.parseBody = function(binary_reply, bson, raw, callback) {$/;"	m
 MongoReply.parseHeader	node_modules/mongodb/lib/mongodb/responses/mongo_reply.js	/^MongoReply.prototype.parseHeader = function(binary_reply, bson) {$/;"	m
-MongoStore	app.js	/^var MongoStore = require('connect-mongo')(express);$/;"	v
+MongoStore	app.js	/^var MongoStore = Mongo(express);$/;"	v
 MongoStore	node_modules/connect-mongo/lib/connect-mongo.js	/^  MongoStore.prototype.__proto__ = Store.prototype;$/;"	c
 MongoStore.__proto__	node_modules/connect-mongo/lib/connect-mongo.js	/^  MongoStore.prototype.__proto__ = Store.prototype;$/;"	m
 MongoStore._get_collection	node_modules/connect-mongo/lib/connect-mongo.js	/^    this._get_collection = function(callback) {$/;"	m
