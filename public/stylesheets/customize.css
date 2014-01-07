@@ -37,18 +37,29 @@
 
 /*发表的帖子*/
 .col-md-3{
-    width:62%;
-    margin-left:2%;
+    width:100%;
 }
 
 /*介绍对齐*/
 .container{
     margin-left:2%;
     margin-right:2%;
+    width:65%;
 }
 
 .user-head{
 display:inline-table;
 }
 
+/*把footer放到中间*/
+footer div{
+    text-align:center;
+}
 
+form>div{
+    margin:15px;
+}
+
+#topic_content{
+    width:100%;   
+}
