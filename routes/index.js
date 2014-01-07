@@ -1,4 +1,3 @@
-
 var User = require('../models/user');
 var crypto = require('crypto');
 /*
@@ -7,7 +6,7 @@ var crypto = require('crypto');
 var listitem=[{number:12,item:'fack'},{number:20,item:'you'}];
 
 exports.index = function  (req,res) {
-    res.render('index',{title:'Homepage',"listitem":listitem});
+    res.render('index',{title:'首页',"listitem":listitem});
 }
 
 exports.user = function  (req,res) {
@@ -18,9 +17,14 @@ exports.post = function  (req,res) {
 
 }
 
+exports.checkreg = function  (req,res,next) {
+    checkNotLogin(req,res,next);
+};
+
 exports.reg = function  (req,res) {
     res.render('reg',{title:'Rigister',"listitem":listitem});
 };
+
 
 exports.doReg = function  (req,res) {
     //http://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F
@@ -45,15 +49,17 @@ exports.doReg = function  (req,res) {
             req.session.user = newUser;
             req.flash('success','注册成功\\(^o^)/~');
             res.redirect('/');
+            console.log(req.session.user);
+            
         });
     });
 }
 
 exports.login = function  (req,res) {
-    res.render('login',{title:'用户登入'});
+    res.render('login',{title:'用户登陆',"listitem":listitem});
 }
 exports.doLogin = function  (req,res) {
-    var md5 = crypto.createHash('md5');
+    var md5 = crypto.createHash('sha256');
     var password = md5.update(req.body.password).digest('base64');
 
     User.get(req.body.username,function  (err,user) {
@@ -74,4 +80,19 @@ exports.logout = function  (req,res) {
     req.session.user = null;
     req.flash('success','登出成功');
     res.redirect('/');
+}
+
+function checkLogin (req,res,next) {
+    if (!req.session.user) {
+        req.flash('error','未登陆');
+        return res.redirect('/login');
+    }
+    next();
+}
+function checkNotLogin (req,res,next) {
+    if (req.session.user) {
+        req.flash('error','已经登陆');
+        return res.redirect('/');
+    }
+    next();
 }
