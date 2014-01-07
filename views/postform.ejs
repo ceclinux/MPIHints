@@ -1,10 +1,23 @@
 <form class="form-horizontal" method="post">
-<div class="input-group">
-  <span class="input-group-addon">标题</span>
-  <input type="text" class="form-control" >
-</div>
-<div>
-<textarea class="form-control" id="topic_content" name="content" placeholder="内容写不完？这儿还可以写..." rows="25"></textarea>
-</div>
+    <div class="input-group">
+        <span class="input-group-addon">标题</span>
+        <input type="text" class="form-control" >
+    </div>
+    <div>
+        <textarea class="form-control" id="topic_content" name="content" placeholder="内容写不完？这儿还可以写..." rows="25"></textarea>
+    </div>   
+    <div class="input-group" style="display:inline;">
+        选择学科&nbsp;&nbsp;&nbsp;&nbsp;
+        <select class="form-control" style="display:inline;width:20%">
+            <option value="one">One</option>
+            <option value="two">Two</option>
+            <option value="three">Three</option>
+            <option value="four">Four</option>
+            <option value="five">Five</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;定义一个标签吧(tag)&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" class="form-control" style="display:inline;width:auto" >
+    </div>
+    <div><button type="submit" class="btn btn-default " style="margin-left:auto;margin-right:auto">提交</button></div>
 </form>
 
