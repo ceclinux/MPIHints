@@ -44,6 +44,7 @@ app.configure(function  () {
         res.locals.error = err.length ? err:null;
         var succ = req.flash('success');
         res.locals.success = succ.length ? succ:null;
+        res.locals.login = req.session.user;
         next();
     })
     app.use(app.router);
