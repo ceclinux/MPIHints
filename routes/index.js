@@ -5,6 +5,7 @@ var Post = require('../models/post');
  * GET home page.
  */
 var listitem=[{number:12,item:'fack'},{number:20,item:'you'}];
+var supply=['yamiedie','echo'];
 
 exports.index = function  (req,res) {
     res.render('index',{title:'首页',"listitem":listitem});
@@ -16,6 +17,7 @@ exports.postform = function  (req,res) {
 
 exports.user = function  (req,res) {
 
+    res.render('li',{layout:false,title:'发表文章',"supplies":supply});
 }
 
 exports.post = function  (req,res) {

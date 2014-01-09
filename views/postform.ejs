@@ -17,6 +17,17 @@
         </select>
         &nbsp;&nbsp;&nbsp;&nbsp;定义一个标签吧(tag)&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" class="form-control" style="display:inline;width:auto" >
+        <script src="/javascripts/picker.js"></script>
+        <script src="/javascripts/picker.time.js"></script>
+        <script src="/javascripts/picker.date.js"></script>
+        <link href="/stylesheets/default.css" rel="stylesheet">
+        <link href="/stylesheets/default.date.css" rel="stylesheet">
+ 
+        <input class="datepicker" >
+        <script>$('.datepicker').pickadate({
+    selectYears: true,
+    selectMonths: true
+})</script>
     </div>
     <div><button type="submit" class="btn btn-default " style="margin-left:auto;margin-right:auto">提交</button></div>
 </form>

@@ -3531,6 +3531,7 @@ stringifyObject	node_modules/express/node_modules/connect/node_modules/qs/index.
 stringifyString	node_modules/express/node_modules/connect/node_modules/qs/index.js	/^function stringifyString(str, prefix) {$/;"	f
 subclass	node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/jasmine.js	/^  subclass.prototype = parentClass.prototype;$/;"	c
 superagent	node_modules/express/node_modules/connect/node_modules/multiparty/test/standalone/test-invalid.js	/^var superagent = require('superagent')$/;"	v
+supply	routes/index.js	/^var supply=['yamiedie','echo'];$/;"	v
 supports	node_modules/express/node_modules/connect/lib/middleware/methodOverride.js	/^function supports(method) {$/;"	f
 supportsBuffer	node_modules/mongodb/node_modules/bson/browser_build/bson.js	/^var supportsBuffer = typeof Buffer != 'undefined';$/;"	v
 supportsBuffer	node_modules/mongodb/node_modules/bson/lib/bson/bson.js	/^var supportsBuffer = typeof Buffer != 'undefined';$/;"	v
