@@ -68,8 +68,8 @@ app.post('/login',routes.doLogin);
 app.get('/logout',routes.logout);
 app.post('/post',routes.checkLogin);
 app.post('/post',routes.post);
-app.get('/postform',routes.checkLogin);
-app.get('/postform',routes.postform);
+app.get('/post',routes.checkLogin);
+app.get('/post',routes.postform);
 
 app.listen(3000);
 

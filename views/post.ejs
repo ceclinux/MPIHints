@@ -1,0 +1,49 @@
+<form class="form-horizontal" method="post">
+    <div class="input-group">
+        <span class="input-group-addon">标题</span>
+        <input type="text" class="form-control" name="title" id="title" >
+    </div>
+    <div>
+        <textarea class="form-control" id="topic_content" name="content" id="content" placeholder="内容写不完？这儿还可以写..." rows="25"></textarea>
+    </div>   
+    <div>
+        <table cellpadding="10">
+            <tr>
+                <td> <label>选择学科</label>
+                </td>
+                <td>
+                    <select class="form-control" style="display:inline" id="course" name="course">
+                        <% for(var i=0; i<courses.length; i++) { %>
+                        <option value='<%= i %>'>
+                        <%= courses[i] %>
+                        </option>
+                        <% } %>
+                    </select>
+                </td>
+                <td>标签(tag)</td>
+                <td>
+                    <input type="text" class="form-control" id="tag" name="tag">
+                </td>
+            </tr>
+            <script src="/javascripts/picker.js"></script>
+            <script src="/javascripts/picker.time.js"></script>
+            <script src="/javascripts/picker.date.js"></script>
+            <link href="/stylesheets/default.css" rel="stylesheet">
+            <link href="/stylesheets/default.date.css" rel="stylesheet">
+            <tr>
+
+                <td><label for="">过期</label></td>
+                <td>
+                    <input type="text" class="datepicker form-control" id="expire" name="expire">
+                    <script>$('.datepicker').pickadate({
+                        selectYears: true,
+                        selectMonths: true
+                    })
+                    </script>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div><button type="submit" class="btn btn-default " style="margin-left:auto;margin-right:auto">提交</button></div>
+</form>
+

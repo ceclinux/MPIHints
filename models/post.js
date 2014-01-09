@@ -1,25 +1,30 @@
 var mongodb = require('./db');
 
-function Post (username,post,time,great,bad) {
+function Post (username,content,title,tag,course,expire) {
     this.user = username;
-    this.post = post;
-    this.great = great;
-    this.bad = bad;
-    if (time) {
-        this.time = time;
-    }
-    else{
-        this.time = new Date();
+    this.content = content;
+    this.good = 0;
+    this.bad = 0;
+    this.title = title;
+    this.tag = tag;
+    this.course = course;
+    this.time = new Date();
+    if (expire) {
+        this.expire = new Date(expire.toString());
     }
 }
 
 Post.prototype.save = function save (callback) {
     var post = {
         user: this.user,
-        post: this.post,
+        content: this.content,
         time: this.time,
         bad: this.bad,
-        good:this.good
+        good:this.good,
+        tag:this.tag,
+        course:this.course,
+        title:this.title,
+        expire:this.expire
     }
     mongodb.open(function  (err,db) {
         if (err) {
@@ -75,3 +80,5 @@ Post.get = function get (username,callback) {
         
     })
 }
+
+module.exports = Post;
