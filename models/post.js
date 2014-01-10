@@ -31,16 +31,21 @@ Post.prototype.save = function save (callback) {
             return callback(err);
         }
 
+
         db.collection('posts',function  (err,collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
             }
-            //为user属性添加索引
-            collection.ensureIndex('user');
-            collection.insert(post,{safe: true},function  (err,post) {
-                mongodb.close();
-                callback(err,post);
+            var cursor = collection.find({});
+            cursor.count(function(err, count){
+                post.pid = ++count;
+                collection.ensureIndex('user');
+                collection.insert(post,{safe: true},function  (err,post) {
+                    mongodb.close();
+                    callback(err,post);
+                });
+
             });
         });
     });
@@ -51,8 +56,8 @@ Post.get = function get (username,callback) {
         if (err) {
             return callback(err);
         }
-        
-        db.collection('post',function  (err,collection) {
+
+        db.collection('posts',function  (err,collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
@@ -61,13 +66,13 @@ Post.get = function get (username,callback) {
             if (username) {
                 query.user = username;
             }
-            
+
             collection.find(query).sort({time:-1}).toArray(function  (err,docs) {
                 mongodb.close();
                 if (err) {
                     callback(err,null);
                 }
-                
+
                 var posts = [];
                 docs.forEach(function  (doc,index) {
                     var post = new Post(doc.user,doc.post,doc.time);
@@ -75,9 +80,9 @@ Post.get = function get (username,callback) {
                 });
                 callback(null,posts);
             })
-            
+
         })
-        
+
     })
 }
 
