@@ -108,10 +108,18 @@ exports.post = function  (req,res) {
             return res.redirect('/');
         }
         req.flash('success','发表成功');
-        res.redirect('/p/123');
+        res.redirect('/p/'+ Post.getMax());
     })
 }
 
 exports.postContent = function  (req,res) {
-    res.render('postContent',{title:'postContent',"listitem":listitem,post:{content:'<p>我是地方萨芬</p>',title:'哈哈哈',category:'ceclinux',tags:['a','c1116','sdfa']}});
+    Post.get(req.params.postid,function  (err,post) {
+        console.log(req.params.postid);
+        
+        if (err) {
+            req.flash('err','木有这篇文章哦');
+        }
+        console.log(post);
+        res.render('postContent',{title:'postContent',"listitem":listitem,post:post});
+    })
 }

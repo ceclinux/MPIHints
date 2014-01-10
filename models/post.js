@@ -1,12 +1,13 @@
 var mongodb = require('./db');
+var max = 0;
 
-function Post (username,content,title,tag,course,expire) {
+function Post (username,content,title,tags,course,expire) {
     this.user = username;
     this.content = content;
     this.good = 0;
     this.bad = 0;
     this.title = title;
-    this.tag = tag;
+    this.tags = tags;
     this.course = course;
     this.time = new Date();
     if (expire) {
@@ -21,7 +22,7 @@ Post.prototype.save = function save (callback) {
         time: this.time,
         bad: this.bad,
         good:this.good,
-        tag:this.tag,
+        tags:this.tags.split(','),
         course:this.course,
         title:this.title,
         expire:this.expire
@@ -40,6 +41,7 @@ Post.prototype.save = function save (callback) {
             var cursor = collection.find({});
             cursor.count(function(err, count){
                 post.pid = ++count;
+                max = count;
                 collection.ensureIndex('user');
                 collection.insert(post,{safe: true},function  (err,post) {
                     mongodb.close();
@@ -51,7 +53,11 @@ Post.prototype.save = function save (callback) {
     });
 };
 
-Post.get = function get (username,callback) {
+Post.getMax = function  () {
+    return max;
+}
+
+Post.get = function get (pid,callback) {
     mongodb.open(function  (err,db) {
         if (err) {
             return callback(err);
@@ -63,22 +69,20 @@ Post.get = function get (username,callback) {
                 return callback(err);
             }
             var query = {};
-            if (username) {
-                query.user = username;
+            if (pid) {
+                query.pid = Number(pid);
             }
 
-            collection.find(query).sort({time:-1}).toArray(function  (err,docs) {
+            
+            collection.findOne(query,function  (err,document) {
                 mongodb.close();
                 if (err) {
                     callback(err,null);
                 }
-
-                var posts = [];
-                docs.forEach(function  (doc,index) {
-                    var post = new Post(doc.user,doc.post,doc.time);
-                    posts.push(post);
-                });
-                callback(null,posts);
+                console.log(document);
+                
+                //callback has two parameters-an error obj(if an error occured) and a cursor object
+                callback(null,document);
             })
 
         })

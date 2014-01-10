@@ -6,8 +6,9 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 Connection	db.js	/^var Connection = require('mongodb').Connection;$/;"	v
 Db	db.js	/^var Db = require('mongodb').Db;$/;"	v
-Post	post.js	/^function Post (username,content,title,tag,course,expire) {$/;"	c
-Post.get	post.js	/^Post.get = function get (username,callback) {$/;"	f
+Post	post.js	/^function Post (username,content,title,tags,course,expire) {$/;"	c
+Post.get	post.js	/^Post.get = function get (pid,callback) {$/;"	f
+Post.getMax	post.js	/^Post.getMax = function  () {$/;"	f
 Post.save	post.js	/^Post.prototype.save = function save (callback) {$/;"	m
 Post.var.post.user	post.js	/^        user: this.user,$/;"	p
 Server	db.js	/^var Server = require('mongodb').Server;$/;"	v
@@ -15,8 +16,9 @@ User	user.js	/^function User (user) {$/;"	c
 User.get	user.js	/^User.get = function get (username,callback) {$/;"	f
 User.save	user.js	/^User.prototype.save = function save (callback) {$/;"	m
 User.var.user.name	user.js	/^        name: this.name,$/;"	p
-get	post.js	/^Post.get = function get (username,callback) {$/;"	f
+get	post.js	/^Post.get = function get (pid,callback) {$/;"	f
 get	user.js	/^User.get = function get (username,callback) {$/;"	f
+max	post.js	/^var max = 0;$/;"	v
 mongodb	post.js	/^var mongodb = require('.\/db');$/;"	v
 mongodb	user.js	/^var mongodb = require('.\/db');$/;"	v
 settings	db.js	/^var settings = require('..\/settings');$/;"	v

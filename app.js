@@ -71,6 +71,7 @@ app.post('/post',routes.checkLogin);
 app.post('/post',routes.post);
 app.get('/post',routes.checkLogin);
 app.get('/post',routes.postform);
+
 app.get('/p/:postid',routes.postContent);
 
 app.listen(3000);
