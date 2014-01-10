@@ -48,7 +48,7 @@
 }
 
 .user-head{
-display:inline-table;
+    display:inline-table;
 }
 
 /*把footer放到中间*/
@@ -63,3 +63,18 @@ form>div{
 #topic_content{
     width:100%;   
 }
+/*取消nav有关的边框颜色*/
+.navbar-inverse .nav > li > a{
+    border:none !important;
+}
+
+/*取消nav有关的边框颜色*/
+.navbar-inverse .navbar-brand{
+    border:none;
+}
+
+/*取消nav有关的边框颜色*/
+.navbar.navbar-inverse .navbar-form{
+    border:none;
+}
+

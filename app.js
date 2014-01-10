@@ -33,6 +33,7 @@ app.configure(function  () {
     app.use(express.urlencoded());
     app.use(express.methodOverride());
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, 'images/login')));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({secret:settings.cookieSecret,store:new MongoStore({db:settings.db})}));
