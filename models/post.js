@@ -1,14 +1,14 @@
 var mongodb = require('./db');
 var max = 0;
 
-function Post (username,content,title,tags,course,expire) {
+function Post (username,content,title,tags,category,expire) {
     this.user = username;
     this.content = content;
     this.good = 0;
     this.bad = 0;
     this.title = title;
     this.tags = tags;
-    this.course = course;
+    this.category = category;
     this.time = new Date();
     if (expire) {
         this.expire = new Date(expire.toString());
@@ -22,8 +22,8 @@ Post.prototype.save = function save (callback) {
         time: this.time,
         bad: this.bad,
         good:this.good,
-        tags:this.tags.split(','),
-        course:this.course,
+        tags:this.tags.split(/,|，/),
+        category:this.category,
         title:this.title,
         expire:this.expire
     }

@@ -12,10 +12,10 @@
                 <td> <label>选择学科</label>
                 </td>
                 <td>
-                    <select class="form-control" style="display:inline" id="course" name="course">
-                        <% for(var i=0; i<courses.length; i++) { %>
+                    <select class="form-control" style="display:inline" id="category" name="category">
+                        <% for(var i=0; i<categories.length; i++) { %>
                         <option value='<%= i %>'>
-                        <%= courses[i] %>
+                        <%= categories[i] %>
                         </option>
                         <% } %>
                     </select>

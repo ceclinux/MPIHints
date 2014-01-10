@@ -6,14 +6,14 @@ var Post = require('../models/post');
  */
 var listitem=[{number:12,item:'fack'},{number:20,item:'you'}];
 var supply=['yamiedie','echo'];
-var courses = ['会计学原理','咨询系统实施','电子商务导论','数据仓库及数据采集','统计学II','英语IV'];
+var categories = ['会计学原理','咨询系统实施','电子商务导论','数据仓库及数据采集','统计学II','英语IV'];
 
 exports.index = function  (req,res) {
     res.render('index',{title:'首页',"listitem":listitem});
 }
 
 exports.postform = function  (req,res) {
-    res.render('post',{title:'发表文章',"listitem":listitem,'courses':courses});
+    res.render('post',{title:'发表文章',"listitem":listitem,"categories":categories});
 }
 
 exports.user = function  (req,res) {
@@ -101,7 +101,7 @@ exports.checkNotLogin = function  (req,res,next) {
 
 exports.post = function  (req,res) {
     var currentUser = req.session.user;
-    var post = new Post(currentUser.name,req.body.content,req.body.title,req.body.tag,req.body.course,req.body.expire);
+    var post = new Post(currentUser.name,req.body.content,req.body.title,req.body.tag,req.body.category,req.body.expire);
     post.save(function  (err) {
         if (err) {
             req.flash('error',err);
@@ -114,12 +114,12 @@ exports.post = function  (req,res) {
 
 exports.postContent = function  (req,res) {
     Post.get(req.params.postid,function  (err,post) {
-        console.log(req.params.postid);
         
         if (err) {
             req.flash('err','木有这篇文章哦');
         }
-        console.log(post);
+        post.category = categories[post.category];
         res.render('postContent',{title:'postContent',"listitem":listitem,post:post});
+
     })
 }
