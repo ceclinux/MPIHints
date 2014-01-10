@@ -2436,6 +2436,7 @@ exports.parseParams	node_modules/express/lib/utils.js	/^exports.parseParams = fu
 exports.plain	node_modules/express/node_modules/connect/lib/middleware/directory.js	/^exports.plain = function(req, res, files){$/;"	f
 exports.plus	node_modules/ejs/lib/filters.js	/^exports.plus = function(a, b){$/;"	f
 exports.post	routes/index.js	/^exports.post = function  (req,res) {$/;"	f
+exports.postContent	routes/index.js	/^exports.postContent = function  (req,res) {$/;"	f
 exports.postform	routes/index.js	/^exports.postform = function  (req,res) {$/;"	f
 exports.prepend	node_modules/ejs/lib/filters.js	/^exports.prepend = function(obj, val){$/;"	f
 exports.processor	node_modules/mongodb/lib/mongodb/utils.js	/^exports.processor = function() {$/;"	f

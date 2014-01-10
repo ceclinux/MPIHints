@@ -11,7 +11,7 @@
     margin-left:25%;
 }
 
-/*右边框*/
+/*右边框和分割框，外边有个淡淡的轮廓*/
 .box {
     background-color: #fff;
     border-radius: 3px;

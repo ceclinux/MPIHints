@@ -108,7 +108,10 @@ exports.post = function  (req,res) {
             return res.redirect('/');
         }
         req.flash('success','发表成功');
-        res.redirect('/post');
+        res.redirect('/p/123');
     })
 }
 
+exports.postContent = function  (req,res) {
+    res.render('postContent',{title:'postContent',"listitem":listitem,post:{content:'<p>我是地方萨芬</p>',title:'哈哈哈',category:'ceclinux',tags:['a','c1116','sdfa']}});
+}

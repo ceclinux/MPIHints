@@ -1,0 +1,48 @@
+<div class="box">
+    <div style="margin:4%">
+        <h3 class="page-header"><%= post.title %><span class="label label-warning" style="margin-left:10px">New</span></h3>
+        <%- post.content %>
+        <div style="width:110px">
+            <a href="" class="thumbnail" style="border:none;float:left">                    <div class="user-head"><img src="http://valuebets.net/images/demo/browser-pic-1.jpg" height="40px" width="40px" alt="..."><p>ceclinux</p></div></a>
+        </div>
+
+        <p class="page-header" style="margin-bottom:0"></p>
+        <table>
+            <tr>
+                <td>
+                    <div><span class="label label-primary" >post.category</span></div>
+                </td>
+                <td rowspan="2">   
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <div> 
+                    <% for(var i=0; i<post.tags.length; i++) { %>
+                        <span class="label label-default" ><%= post.tags[i] %></span>
+                    <% } %>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+<div class="pagination">
+    <ul>
+        <li class="previous"><a href="#"><img src="../images/pager/previous.png"></a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#">9</a></li>
+        <li class="next"><a href="#"><img src="../images/pager/next.png"></a></li>
+    </ul>
+</div>
+
+
