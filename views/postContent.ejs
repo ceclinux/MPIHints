@@ -2,6 +2,7 @@
     <div style="margin:4%">
         <h3 class="page-header"><%= post.title %><span class="label label-warning" style="margin-left:10px">New</span></h3>
         <%- post.content %>
+        <script src="/javascripts/setPostImgSize.js"></script>
         <div style="width:110px">
             <a href="" class="thumbnail" style="border:none;float:left">                    <div class="user-head"><img src="http://valuebets.net/images/demo/browser-pic-1.jpg" height="40px" width="40px" alt="..."><p>ceclinux</p></div></a>
         </div>
@@ -44,20 +45,3 @@
         <li class="next"><a href="#"><img src="../images/pager/next.png"></a></li>
     </ul>
 </div>
-<script>
-    //获取img的真实尺度来计算显示的长度
-    //这不是数组啊亲
-    var screenImage = $(".postimage");
-
-    // Create new offscreen image to test
-    for(var i=0;i<screenImage.length;i++){
-        var theImage = new Image();
-        theImage.src = screenImage.eq(i).attr("src");
-        if(theImage.width<600)
-            screenImage.eq(i).attr('width',theImage.width);
-
-    }
-
-    // Get accurate measurements from that.
-</script>
-

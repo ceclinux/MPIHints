@@ -33,7 +33,6 @@ app.configure(function  () {
     app.use(express.urlencoded());
     app.use(express.methodOverride());
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use(express.static(path.join(__dirname, 'images/login')));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.session({secret:settings.cookieSecret,store:new MongoStore({db:settings.db})}));
@@ -46,6 +45,7 @@ app.configure(function  () {
         var succ = req.flash('success');
         res.locals.success = succ.length ? succ:null;
         res.locals.login = req.session.user;
+        res.locals.url = req.url;
         next();
     })
     app.use(app.router);
