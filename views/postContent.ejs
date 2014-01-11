@@ -19,9 +19,9 @@
             <tr>
                 <td>
                     <div> 
-                    <% for(var i=0; i<post.tags.length; i++) { %>
+                        <% for(var i=0; i<post.tags.length; i++) { %>
                         <span class="label label-default" ><%= post.tags[i] %></span>
-                    <% } %>
+                        <% } %>
                     </div>
                 </td>
             </tr>
@@ -44,5 +44,20 @@
         <li class="next"><a href="#"><img src="../images/pager/next.png"></a></li>
     </ul>
 </div>
+<script>
+    //获取img的真实尺度来计算显示的长度
+    //这不是数组啊亲
+    var screenImage = $(".postimage");
 
+    // Create new offscreen image to test
+    for(var i=0;i<screenImage.length;i++){
+        var theImage = new Image();
+        theImage.src = screenImage.eq(i).attr("src");
+        if(theImage.width<600)
+            screenImage.eq(i).attr('width',theImage.width);
+
+    }
+
+    // Get accurate measurements from that.
+</script>
 

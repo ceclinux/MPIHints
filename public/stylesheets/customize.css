@@ -78,3 +78,10 @@ form>div{
     border:none;
 }
 
+.markItUpEditor{
+    width:100% !important;
+}
+
+.markItUp{
+    width:inherit !important;
+}
