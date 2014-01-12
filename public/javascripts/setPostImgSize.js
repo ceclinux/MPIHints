@@ -12,7 +12,7 @@ $(window).load(function(){var screenImage = $(".postimage");
                    }
                    else
                        screenImage.eq(i).attr('width',defaultWidth);
-                   screenImage.eq(i).css('display','block');
+                   screenImage.eq(i).css('display','block').css('visibility','visible');
                }
 
 })
