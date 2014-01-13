@@ -24,7 +24,7 @@ Post.prototype.getContent = function getContent () {
         var imgReg = /(http:\/\/([^\.]+\.)+?(jpg|png|bmp)\s)/g;
         while(httpReg.test(paragraphs[i]) ){
             //visibility:hidden会使图片占位但仍然加载
-            paragraphs[i] = paragraphs[i].replace(imgReg,"<img src='$1' class='postimage' style='visibility:hidden'/>");
+            paragraphs[i] = paragraphs[i].replace(imgReg,"<img src='$1' class='postimage'/>");
         }
         content += ('<p>'+paragraphs[i] +'</p>');
     }

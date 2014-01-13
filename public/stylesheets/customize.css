@@ -85,3 +85,7 @@ form>div{
 .markItUp{
     width:inherit !important;
 }
+
+.postimage{
+    max-width:700px;
+}
