@@ -4,7 +4,7 @@
         <title><%= title %> -MPIHints</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
-        <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
         <link href="/stylesheets/flat-ui.css" rel="stylesheet">
         <link href="/stylesheets/customize.css" rel="stylesheet">
         <script src="/javascripts/jquery-1.9.1.js"></script>
@@ -19,8 +19,7 @@
                     return {
                         "event":
                             [
-                            {"date":"2014-01-25","title":"1"}
-                              ,{"date":"2014-02-01","title":"2"}
+                               {"date":"2014-02-01","title":"2"}
                               ,{"date":"2014-03-22","title":"34"}
                               ,{"date":"2014-04-03","title":"123"}
                               ,{"date":"2014-05-04","title":"223"}
@@ -119,8 +118,19 @@
                     <% } %>
                 </div>
             </ul>
+
+            <ul class="nav nav-pills nav-stacked  box" style="margin-top:30px"><div style="text-align:center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span4" id="calendar"></div>
+                        </div>
+                    </div> <!-- /container -->
+                </div>
+            </ul>
+
         </div>
         <% } %>
+
 
         <div id="container" class="container">
             <div id="containbody">
@@ -132,7 +142,6 @@
                 <% } %>
                 <%- body %>
             </div>
-            <hr />
         </div>
         <footer>
             <div>
