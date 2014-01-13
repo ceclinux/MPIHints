@@ -4,6 +4,7 @@
     width:30%;
     margin-right:2%;
     margin-left:2%;
+    margin-bottom:2%;
 }
 
 /*分页器*/
@@ -89,3 +90,4 @@ form>div{
 .postimage{
     max-width:700px;
 }
+
