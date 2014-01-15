@@ -1877,6 +1877,7 @@ abs_srcdir	node_modules/mongodb/node_modules/bson/build/Makefile	/^abs_srcdir :=
 abs_srcdir	node_modules/mongodb/node_modules/kerberos/build/Makefile	/^abs_srcdir := $(abspath $(srcdir))$/;"	m
 acceptParams	node_modules/express/lib/utils.js	/^function acceptParams(str, index) {$/;"	f
 acceptParams.ret.value	node_modules/express/lib/utils.js	/^  var ret = { value: parts[0], quality: 1, params: {}, originalIndex: index };$/;"	p
+accessLogfile	app.js	/^var accessLogfile = fs.createWriteStream('access.log',{flags:'a'});$/;"	v
 acquireCredentialsHandle_fn	node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos_sspi.h	/^typedef DWORD (WINAPI *acquireCredentialsHandle_fn)($/;"	t
 actualChunks	node_modules/express/node_modules/connect/node_modules/multiparty/node_modules/readable-stream/test/simple/test-stream-writev.js	/^  var actualChunks;$/;"	v
 actualDisplay	node_modules/jquery/dist/jquery.js	/^function actualDisplay( name, doc ) {$/;"	f
@@ -2465,6 +2466,7 @@ errmsg	node_modules/mongodb/node_modules/bson/ext/nan.h	/^  const char *errmsg;$
 error	node_modules/mongodb/node_modules/kerberos/lib/win32/worker.h	/^    bool error;$/;"	m	class:Worker
 error	node_modules/mongodb/node_modules/kerberos/lib/worker.h	/^    bool error;$/;"	m	class:Worker
 errorHandler	node_modules/mongodb/lib/mongodb/connection/connection.js	/^var errorHandler = function(self) {$/;"	f
+errorLogfile	app.js	/^var errorLogfile = fs.createWriteStream('error.log', {flags:'a'});$/;"	v
 errorOptions	node_modules/mongodb/lib/mongodb/collection/core.js	/^  var errorOptions = shared._getWriteConcern(self, options);$/;"	v
 errorOptions	node_modules/mongodb/lib/mongodb/collection/index.js	/^  var errorOptions = _getWriteConcern(this, options);$/;"	v
 errorOptions	node_modules/mongodb/lib/mongodb/db.js	/^  var errorOptions = _getWriteConcern(this, options);$/;"	v
@@ -2708,6 +2710,7 @@ fresh	node_modules/express/node_modules/fresh/index.js	/^function fresh(req, res
 fromArray	node_modules/express/node_modules/connect/node_modules/multiparty/node_modules/readable-stream/test/simple/test-stream2-objects.js	/^function fromArray(list) {$/;"	f
 fromList	node_modules/express/node_modules/connect/node_modules/multiparty/node_modules/readable-stream/lib/_stream_readable.js	/^function fromList(n, state) {$/;"	f
 fromList	node_modules/express/node_modules/connect/node_modules/multiparty/node_modules/readable-stream/test/simple/test-stream2-readable-from-list.js	/^var fromList = require('..\/..\/lib\/_stream_readable')._fromList;$/;"	v
+fs	app.js	/^var fs = require('fs');$/;"	v
 fs	node_modules/ejs/support/compile.js	/^var fs = require('fs');$/;"	v
 fs	node_modules/express/node_modules/connect/lib/middleware/directory.js	/^var fs = require('fs')$/;"	v
 fs	node_modules/express/node_modules/connect/lib/middleware/favicon.js	/^var fs = require('fs')$/;"	v

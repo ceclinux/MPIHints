@@ -9,6 +9,7 @@ var supply=['yamiedie','echo'];
 var categories = ['会计学原理','咨询系统实施','电子商务导论','数据仓库及数据采集','统计学II','英语IV'];
 
 exports.index = function  (req,res) {
+    //Render a view with a callback responding with the rendered string. When an error occurs next(err) is invoked internally. When a callback is provided both the possible error and rendered string are passed, and no automated response is performed.
     res.render('index',{title:'首页',"listitem":listitem});
 }
 
