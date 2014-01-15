@@ -23,12 +23,14 @@ var flash = require('connect-flash');
 var app = express();
 
 //Express支持两种模式：开发模式和产品模式
-app.configure('production',function  () {
-    app.error(function  (err,req,res,next) {
-        errorLogfile.write(meta + err.stack + '\n');
-        next();
-    });
-});
+//3.x已经停用app.error,请用middleware()
+/*app.configure('production',function  () {*/
+//app.error(function  (err,req,res,next) {
+//var meta = ']' + new Date() + '] ' + req.url + '\n';
+//errorLogfile.write(meta + err.stack + '\n');
+//next();
+//});
+//});
 
 //在两种模式下的配置
 app.configure(function  () {
@@ -92,29 +94,36 @@ app.get('/p/:postid',routes.postContent);
 
 //http://expressjs.com/api.html#app.listen
 ///**
- /** Listen for connections.*/
- //*
- //* A node `http.Server` is returned, with this
- //* application (which is a `Function`) as its
- //* callback. If you wish to create both an HTTP
- //* and HTTPS server you may do so with the "http"
- //* and "https" modules as shown here:
- //*
- //*    var http = require('http')
- //*      , https = require('https')
- //*      , express = require('express')
- //*      , app = express();
- //*
- //*    http.createServer(app).listen(80);
- //*    https.createServer({ ... }, app).listen(443);
- //*
- //* @return {http.Server}
- //* @api public
- //*/
+/** Listen for connections.*/
+//*
+//* A node `http.Server` is returned, with this
+//* application (which is a `Function`) as its
+//* callback. If you wish to create both an HTTP
+//* and HTTPS server you may do so with the "http"
+//* and "https" modules as shown here:
+//*
+//*    var http = require('http')
+//*      , https = require('https')
+//*      , express = require('express')
+//*      , app = express();
+//*
+//*    http.createServer(app).listen(80);
+//*    https.createServer({ ... }, app).listen(443);
+//*
+//* @return {http.Server}
+//* @api public
+//*/
 
 //app.listen = function(){
-  //var server = http.createServer(this);
-  //return server.listen.apply(server, arguments);
+//var server = http.createServer(this);
+//return server.listen.apply(server, arguments);
 //};
 
-app.listen(3000);
+if(!module.parent){
+    var server = app.listen(3000);
+    //app.settings -- env Environment mode, defaults to process.env.NODE_ENV or "development"
+    //server.port是nodejs而非expressjs的
+    console.log("Express server listening on port %d in %s mode", server.address().port, app.settings.env);
+}
+
+module.exports = app;

@@ -15,6 +15,7 @@ exports.index = function  (req,res) {
 
 exports.postform = function  (req,res) {
     res.render('post',{title:'发表文章',"listitem":listitem,"categories":categories});
+    throw new Error('An errror for purposes');
 }
 
 exports.user = function  (req,res) {
@@ -115,7 +116,6 @@ exports.post = function  (req,res) {
 
 exports.postContent = function  (req,res) {
     Post.get(req.params.postid,function  (err,post) {
-        
         if (err) {
             req.flash('err','木有这篇文章哦');
         }
