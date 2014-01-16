@@ -15,7 +15,6 @@ exports.index = function  (req,res) {
 
 exports.postform = function  (req,res) {
     res.render('post',{title:'发表文章',"listitem":listitem,"categories":categories});
-    throw new Error('An errror for purposes');
 }
 
 exports.user = function  (req,res) {
@@ -123,4 +122,8 @@ exports.postContent = function  (req,res) {
         res.render('postContent',{title:'postContent',"listitem":listitem,post:post});
 
     })
+}
+
+exports.settings = function (req,res){
+    res.render('settings',{title:'发表文章',"listitem":listitem,"categories":categories});
 }

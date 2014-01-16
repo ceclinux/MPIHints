@@ -2610,6 +2610,7 @@ exports.setUp	node_modules/mongodb/node_modules/kerberos/test/kerberos_win32_tes
 exports.setUp	node_modules/mongodb/node_modules/kerberos/test/win32/security_buffer_descriptor_tests.js	/^exports.setUp = function(callback) {$/;"	f
 exports.setUp	node_modules/mongodb/node_modules/kerberos/test/win32/security_buffer_tests.js	/^exports.setUp = function(callback) {$/;"	f
 exports.setUp	node_modules/mongodb/node_modules/kerberos/test/win32/security_credentials_tests.js	/^exports.setUp = function(callback) {$/;"	f
+exports.settings	routes/index.js	/^exports.settings = function (req,res){$/;"	f
 exports.sign	node_modules/express/node_modules/cookie-signature/index.js	/^exports.sign = function(val, secret){$/;"	f
 exports.sort	node_modules/ejs/lib/filters.js	/^exports.sort = function(obj){$/;"	f
 exports.sort_by	node_modules/ejs/lib/filters.js	/^exports.sort_by = function(obj, prop){$/;"	f
