@@ -1,9 +1,9 @@
-//mongodb配置文件
+//mongodb连接文件
 
 //http://mongodb.github.io/node-mongodb-native/
-var settings = require('../settings');
-var Db = require('mongodb').Db;
-var Connection = require('mongodb').Connection;
-var Server = require('mongodb').Server;
 
-module.exports = new Db(settings.db,new Server(settings.host, Connection.DEFAULT_PORT,{safe:true}));
+var MongoClient = require('mongodb').MongoClient;
+url='mongodb://ceclinux:17283950@widmore.mongohq.com:10010/mpihints';
+
+exports.MongoClient = MongoClient;
+exports.url = url;

@@ -1,4 +1,5 @@
-var mongodb = require('./db');
+var MongoClient = require('./db').MongoClient;
+var url = require('./db').url;
 
 function User (user) {
     this.name = user.name;
@@ -14,49 +15,32 @@ User.prototype.save = function save (callback) {
         password: this.password,
     };
 
-    mongodb.open(function  (err,db) {
-        if (err) {
-            return callback;
-        };
-
-        db.collection('users',function  (err,collection) {
-            if (err) {
-                mongodb.close();
-                return callback(err);
-            }
-
-            collection.ensureIndex('name',{unique:true});
-
+    MongoClient.connect(url,function  (err,db) {
+        var collection = db.collection('users');
+        collection.ensureIndex('name',{unique:true},function  (err,indexName) {
             collection.insert(user,{safe:true},function  (err,user) {
-                mongodb.close();
                 callback(err,user);
             });
         });
-    })
+    });
 };
 
 User.get = function get (username,callback) {
-    mongodb.open(function  (err,db) {
+    MongoClient.connect(url,function(err,db){
         if (err) {
+            //Close the current db connection, including all the child db instances. Emits close event if no callback is provided.
+            db.close();
             return callback(err);
         }
-
-        db.collection('users',function  (err,collection) {
-            if (err) {
-                mongodb.close();
-                return callback(err);
+        var collection = db.collection('users');
+        collection.findOne({name:username},function  (err,doc) {
+            if (doc) {
+                //封装为User对象
+                var user = new User(doc);
+                callback(err,user);
+            }else{
+                callback(err,null);
             }
-
-            collection.findOne({name:username},function  (err,doc) {
-                mongodb.close();
-                if (doc) {
-                    //封装为User对象
-                    var user = new User(doc);
-                    callback(err,user);
-                }else{
-                    callback(err,null);
-                }
-            });
         });
     });
 };

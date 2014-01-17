@@ -41,12 +41,13 @@ exports.doReg = function  (req,res) {
         if (user) { err = '不好意思，用户名被占啦>_<';}
         if (err) {
             req.flash('error',err);
+            console.log(err);
             return res.redirect('/reg');
         }
 
         newUser.save(function  (err) {
             if (err) {
-                req.flash('error','不好意思，数据库出现问题啦，请联系Cecil = =' + err.toString());
+               req.flash('error','不好意思，数据库出现问题啦，请联系Cecil = = ,错误信息：' + err.toString());
                 return res.redirect('/reg');
             }
             req.session.user = newUser;

@@ -9,7 +9,6 @@ var errorLogfile = fs.createWriteStream('error.log', {flags:'a'});
 var express = require('express');
 var Mongo = require('connect-mongo');
 var MongoStore = Mongo(express);
-var settings = require('./settings');
 var routes = require('./routes');
 var partials = require('express-partials');
 var user = require('./routes/user');
@@ -52,7 +51,7 @@ app.configure(function  () {
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-    app.use(express.session({secret:settings.cookieSecret,store:new MongoStore({db:settings.db})}));
+    app.use(express.session({secret:'MPIHintsceclinux',store:new MongoStore({db:'mpihints'})}));
 
     //http://cnodejs.org/topic/501f5d8ff767cc9a51c98165
 

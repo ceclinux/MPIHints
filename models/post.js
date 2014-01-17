@@ -1,5 +1,5 @@
-var mongodb = require('./db');
-var max = 0;
+var MongoClient = require('./db').MongoClient;
+var url = require('./db').url;
 
 function Post (username,content,title,tags,category,expire) {
     this.user = username;
@@ -45,67 +45,57 @@ Post.prototype.save = function save (callback) {
         title:this.title,
         expire:this.expire
     }
-    mongodb.open(function  (err,db) {
+
+    MongoClient.connect(url,function(err,db){
+        var collection = db.collection('posts');
         if (err) {
+            db.close();
             return callback(err);
         }
-
-
-        db.collection('posts',function  (err,collection) {
-            if (err) {
-                mongodb.close();
-                return callback(err);
-            }
-            var cursor = collection.find({});
-            cursor.count(function(err, count){
-                post.pid = ++count;
-                max = count;
-                collection.ensureIndex('user');
+        var cursor = collection.find({});
+        cursor.count(function(err, count){
+            post.pid = ++count;
+            max = count;
+            collection.ensureIndex('user',function(err,indexName){
                 collection.insert(post,{safe: true},function  (err,post) {
-                    mongodb.close();
+                    db.close();
                     callback(err,post);
                 });
-
             });
         });
     });
 };
 
-Post.getMax = function  () {
+Post.getMax = function() {
     return max;
 }
 
 Post.get = function get (pid,callback) {
-    mongodb.open(function  (err,db) {
+
+    MongoClient.connect(url,function(err,db){
+        var collection = db.collection('posts');
         if (err) {
+            db.close();
             return callback(err);
         }
+        var query = {};
+        if (pid) {
+            query.pid = Number(pid);
+        }
 
-        db.collection('posts',function  (err,collection) {
+        collection.findOne(query,function  (err,document) {
+            db.close();
             if (err) {
-                mongodb.close();
-                return callback(err);
+                callback(err,null);
             }
-            var query = {};
-            if (pid) {
-                query.pid = Number(pid);
-            }
+            console.log(document);
 
-
-            collection.findOne(query,function  (err,document) {
-                mongodb.close();
-                if (err) {
-                    callback(err,null);
-                }
-                console.log(document);
-
-                //callback has two parameters-an error obj(if an error occured) and a cursor object
-                callback(null,document);
-            })
-
+            //callback has two parameters-an error obj(if an error occured) and a cursor object
+            callback(null,document);
         })
 
     })
+
 }
 
 module.exports = Post;
