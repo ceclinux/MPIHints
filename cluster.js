@@ -1,3 +1,4 @@
+require('newrelic')
 //A single instance of Node runs in a single thread. To take advantage of multi-core systems the user will sometimes want to launch a cluster of Node processes to handle the load.
 var cluster = require('cluster');
 var os = require('os');

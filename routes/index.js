@@ -47,7 +47,7 @@ exports.doReg = function  (req,res) {
 
         newUser.save(function  (err) {
             if (err) {
-               req.flash('error','不好意思，数据库出现问题啦，请联系Cecil = = ,错误信息：' + err.toString());
+                req.flash('error','不好意思，数据库出现问题啦，请联系Cecil = = ,错误信息：' + err.toString());
                 return res.redirect('/reg');
             }
             req.session.user = newUser;
@@ -112,6 +112,7 @@ exports.post = function  (req,res) {
         req.flash('success','发表成功');
         res.redirect('/p/'+ Post.getMax());
     })
+
 }
 
 exports.postContent = function  (req,res) {
@@ -127,4 +128,12 @@ exports.postContent = function  (req,res) {
 
 exports.settings = function (req,res){
     res.render('settings',{title:'发表文章',"listitem":listitem,"categories":categories});
+}
+
+exports.updateUser = function  (req,res) {
+    var imageUrl = req.body.imageUrl;
+    var nickname = req.body.nickname;
+    User.update(req.session.user.name,{imageUrl:imageUrl,nickname:nickname});
+    req.flash('success','更新成功');
+    return res.redirect('/');
 }

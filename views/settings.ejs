@@ -1,23 +1,35 @@
 <form id="target" class="form-horizontal" method="post">
-<table cellpadding="10" style="margin-left:auto;margin-right:auto">
-    <tr>
-    <td>自定义头像</td>
-        <td><div style=''>
-        <a href="#" class="thumbnail" style="width:500px;height:500px;display: table-cell; vertical-align: middle; " >
-            <img src="http://guo.lu/wp-content/uploads/2013/09/1a0d0cc43a178b4bba8467f6b484e06b.jpg" width="100px" style="margin-top:auto;margin-bottom:auto" />
-        </a>
-    </div></td>
-    </tr>
-    <tr>
-        <td>昵称</td>
-        <td><input type="text" class="form-control" id="nickname" name="nickname"></td>
-    </tr>
+    <table cellpadding="10" style="margin-left:auto;margin-right:auto">
+        <tr>
+            <td>自定义头像</td>
+            <td colspan="2"><div style=''>
+                    <a href="#" class="thumbnail" style="width:500px;height:500px;display: table-cell; vertical-align: middle; " >
+                        <img class="userhead" src="/images/default-head.jpg" style="margin-top:auto;margin-bottom:auto;max-width:700" />
+                    </a>
 
-    <tr>
-        <td><div><button type="submit" class="btn btn-default " style="margin-left:auto;margin-right:auto">提交</button></div></td>
-        <td></td>
-    </tr>
-</table>
-    
-    
-</form>
+            </div></td>
+        </tr>
+        <tr>
+            <td>图片URL</td>
+            <td><input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="此处输入图片的url，不支持本地"></td>
+            <td><a class="btn btn-primary btn-lg" id="updateButton" role="button">更新</td>
+
+            </tr>
+            <tr>
+                <td>昵称</td>
+                <td colspan="2"><input type="text" class="form-control" id="nickname" name="nickname" placeholder="建议使用自己的英文名字"></td>
+            </tr>
+
+            <tr>
+                <td><div><button type="submit" class="btn btn-default " style="margin-left:auto;margin-right:auto" id="updateUser" name="updateUser">提交</button></div></td>
+                <td></td>
+            </tr>
+        </table>
+
+
+    </form>
+    <script>
+        $('#updateButton').click(function(){
+            $('.userhead').attr('src',$('#imageUrl').val());
+        })
+    </script>

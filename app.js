@@ -91,6 +91,8 @@ app.get('/post',routes.checkLogin);
 app.get('/post',routes.postform);
 app.get('/p/:postid',routes.postContent);
 app.get('/settings',routes.settings);
+app.post('/settings',routes.checkLogin);
+app.post('/settings',routes.updateUser);
 
 //http://expressjs.com/api.html#app.listen
 ///**

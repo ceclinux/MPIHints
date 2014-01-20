@@ -4,6 +4,7 @@ var url = require('./db').url;
 function User (user) {
     this.name = user.name;
     this.password = user.password;
+    this.headUrl = '/images/default-head.jpg'
 };
 //这样可以直接返回User对象哦
 module.exports = User;
@@ -13,6 +14,8 @@ User.prototype.save = function save (callback) {
     var user = {
         name: this.name,
         password: this.password,
+        headUrl:this.headUrl,
+        nickname:this.name
     };
 
     MongoClient.connect(url,function  (err,db) {
@@ -25,7 +28,23 @@ User.prototype.save = function save (callback) {
     });
 };
 
-User.get = function get (username,callback) {
+User.update = function update (username,query,callback) {
+    MongoClient.connect(url,function(err,db){
+        if (err) {
+            //Close the current db connection, including all the child db instances. Emits close event if no callback is provided.
+            db.close();
+            return callback(err);
+        }
+        var collection = db.collection('users');
+        //更新用户的头像和昵称
+        collection.update({name:username},{"$set":query},function  (err,doc) {
+            callback(err,user);
+        });
+    });
+
+}
+
+User.prototype.get = function get (username,callback) {
     MongoClient.connect(url,function(err,db){
         if (err) {
             //Close the current db connection, including all the child db instances. Emits close event if no callback is provided.
