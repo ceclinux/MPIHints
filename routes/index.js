@@ -10,7 +10,14 @@ var categories = ['会计学原理','咨询系统实施','电子商务导论','�
 
 exports.index = function  (req,res) {
     //Render a view with a callback responding with the rendered string. When an error occurs next(err) is invoked internally. When a callback is provided both the possible error and rendered string are passed, and no automated response is performed.
-    res.render('index',{title:'首页',"listitem":listitem});
+    if(req.session.user){
+        User.get(req.session.user.name,function(err,doc){
+            res.render('index',{title:'首页',imageUrl:doc.headUrl,"listitem":listitem});
+        })
+    }
+    else{
+        res.render('index',{title:'首页',"listitem":listitem});
+    }
 }
 
 exports.postform = function  (req,res) {
@@ -127,8 +134,7 @@ exports.postContent = function  (req,res) {
 
 exports.settings = function (req,res){
     User.get(req.session.user.name,function(err,doc){
-        console.log(doc);
-        res.render('settings',{title:'发表文章',imageUrl:doc.imageUrl,"listitem":listitem,"categories":categories});
+        res.render('settings',{title:'发表文章',imageUrl:doc.headUrl,"listitem":listitem,"categories":categories});
         return;
     })
 }
@@ -136,7 +142,8 @@ exports.settings = function (req,res){
 exports.updateUser = function  (req,res) {
     var imageUrl = req.body.imageUrl;
     var nickname = req.body.nickname;
-    User.update(req.session.user.name,{imageUrl:imageUrl,nickname:nickname});
-    req.flash('success','更新成功');
-    return res.redirect('/settings');
+    User.update(req.session.user.name,{headUrl:imageUrl,nickname:nickname},function(){
+        req.flash('success','更新成功');
+        return res.redirect('/settings');
+    })
 }
