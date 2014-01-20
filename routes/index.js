@@ -36,7 +36,6 @@ exports.doReg = function  (req,res) {
     var password = md5.update(req.body.password).digest('base64');
     //创建一个新用户，从表单中获得的信息
     var newUser = new User({name: req.body.username,password:password});
-
     User.get(newUser.name,function  (err,user) {
         if (user) { err = '不好意思，用户名被占啦>_<';}
         if (err) {
@@ -127,7 +126,11 @@ exports.postContent = function  (req,res) {
 }
 
 exports.settings = function (req,res){
-    res.render('settings',{title:'发表文章',"listitem":listitem,"categories":categories});
+    User.get(req.session.user.name,function(err,doc){
+        console.log(doc);
+        res.render('settings',{title:'发表文章',imageUrl:doc.imageUrl,"listitem":listitem,"categories":categories});
+        return;
+    })
 }
 
 exports.updateUser = function  (req,res) {
@@ -135,5 +138,5 @@ exports.updateUser = function  (req,res) {
     var nickname = req.body.nickname;
     User.update(req.session.user.name,{imageUrl:imageUrl,nickname:nickname});
     req.flash('success','更新成功');
-    return res.redirect('/');
+    return res.redirect('/settings');
 }

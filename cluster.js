@@ -28,10 +28,10 @@ if (cluster.isMaster) {
     app.listen(3000);
 }
 
-//当主进程被终止时，关闭所有工作进程
-process.on('SIGTERM',function(){
-    for(var pid in workers){
-        process.kill(pid);
-    }
-    process.exit(0);
-});
+//当主进程被终止时，关闭所有工作进程*/
+//process.on('SIGTERM',function(){
+//    for(var pid in workers){
+//        process.kill(pid);
+//    }
+//    process.exit(0);
+//});

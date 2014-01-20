@@ -90,6 +90,7 @@ app.post('/post',routes.post);
 app.get('/post',routes.checkLogin);
 app.get('/post',routes.postform);
 app.get('/p/:postid',routes.postContent);
+app.get('/settings',routes.checkLogin);
 app.get('/settings',routes.settings);
 app.post('/settings',routes.checkLogin);
 app.post('/settings',routes.updateUser);
