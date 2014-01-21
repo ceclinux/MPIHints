@@ -7,13 +7,15 @@ var Post = require('../models/post');
 var listitem=[{number:12,item:'fack'},{number:20,item:'you'}];
 var supply=['yamiedie','echo'];
 var categories = ['会计学原理','咨询系统实施','电子商务导论','数据仓库及数据采集','统计学II','英语IV'];
+var imageUrl = '';
+var nickname = '';
 
 exports.index = function  (req,res) {
     //Render a view with a callback responding with the rendered string. When an error occurs next(err) is invoked internally. When a callback is provided both the possible error and rendered string are passed, and no automated response is performed.
     if(req.session.user){
-        User.get(req.session.user.name,function(err,doc){
-            res.render('index',{title:'首页',imageUrl:doc.headUrl,"listitem":listitem});
-        })
+        if(imageUrl==''){
+            getUserData(res,req,"首页");
+        }
     }
     else{
         res.render('index',{title:'首页',"listitem":listitem});
@@ -21,7 +23,7 @@ exports.index = function  (req,res) {
 }
 
 exports.postform = function  (req,res) {
-    res.render('post',{title:'发表文章',"listitem":listitem,"categories":categories});
+    res.render('post',{title:'发表文章',imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"categories":categories});
 }
 
 exports.user = function  (req,res) {
@@ -127,14 +129,18 @@ exports.postContent = function  (req,res) {
             req.flash('err','木有这篇文章哦');
         }
         post.category = categories[post.category];
-        res.render('postContent',{title:'postContent',"listitem":listitem,post:post});
+        User.get(post.user,function(err,doc){
+            post.headUrl = doc.headUrl;
+            post.nickname = doc.nickname;
+            res.render('postContent',{title:'postContent',imageUrl:imageUrl,nickname:nickname,"listitem":listitem,post:post});
 
+        })
     })
 }
 
 exports.settings = function (req,res){
     User.get(req.session.user.name,function(err,doc){
-        res.render('settings',{title:'发表文章',imageUrl:doc.headUrl,"listitem":listitem,"categories":categories});
+        res.render('settings',{title:'发表文章',imageUrl:imageUrl,nickname:imageUrl,"listitem":listitem,"categories":categories});
         return;
     })
 }
@@ -145,5 +151,13 @@ exports.updateUser = function  (req,res) {
     User.update(req.session.user.name,{headUrl:imageUrl,nickname:nickname},function(){
         req.flash('success','更新成功');
         return res.redirect('/settings');
+    })
+}
+
+var getUserData = function(res,req,title){
+    User.get(req.session.user.name,function(err,doc){
+        imageUrl = doc.headUrl;
+        nickname = doc.nickname
+        res.render('index',{title:title,imageUrl:imageUrl,nickname:imageUrl,"listitem":listitem});
     })
 }
