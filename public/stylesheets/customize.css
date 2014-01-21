@@ -21,7 +21,7 @@
 }
 
 /*发表帖子的头像*/
-.thumbnail > .user-head > img{
+.user-head > img{
     margin-left:0;
     display:inline;
     border-radius:40px;
@@ -31,7 +31,7 @@
     box-shadow: 0 0 6px hsla(0,27%,42%,.5);
 }
 
-.thumbnail>.user-head>p{
+.user-head>p{
     margin-bottom:0px;
     margin-left:12px;
 }

@@ -87,7 +87,7 @@
 }
 
 .calendar TD SPAN.weekday{
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #e74c3c;
     border-radius: 14%;
     color: #FFFFFF;
     font-size: 32px;
@@ -97,7 +97,7 @@
 }
 
 .calendar TD SPAN.weekday:hover{
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: #c0392b;
 }
 
 .calendar TFOOT, .calendar TFOOT TR TH.sel {

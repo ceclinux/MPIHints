@@ -37,11 +37,19 @@
                 };
 
                 $('#calendar').Calendar({ 'events': evnts, 'weekStart': 1 })
-                .on('changeDay', function(event){ alert(event.day.valueOf()); })
-                .on('onEvent', function(event){ alert(event.day.valueOf()); })
-                .on('onNext', function(event){ alert("Next"); })
-                .on('onPrev', function(event){ alert("Prev"); })
-                .on('onCurrent', function(event){ alert("Current"); });
+                .on('changeDay', function(event){
+                    var day = event.day.toString();
+                    var month = event.month.toString();
+                    if(event.day<10)
+                        day = '0'+day;
+                    if(event.month<10)
+                        month = '0'+month;
+                    window.location.href = '/test/'+year + month + day;
+                })
+                .on('onEvent', function(event){})
+                .on('onNext', function(event){})
+                .on('onPrev', function(event){})
+                .on('onCurrent', function(event){});
             });
 
         </script>
