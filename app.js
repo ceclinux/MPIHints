@@ -94,6 +94,7 @@ app.get('/settings',routes.checkLogin);
 app.get('/settings',routes.settings);
 app.post('/settings',routes.checkLogin);
 app.post('/settings',routes.updateUser);
+app.get('/test/:date',routes.testlist);
 
 //http://expressjs.com/api.html#app.listen
 ///**
@@ -130,3 +131,4 @@ if(!module.parent){
 }
 
 module.exports = app;
+

@@ -1481,6 +1481,7 @@ Post	models/post.js	/^function Post (username,content,title,tags,category,expire
 Post	routes/index.js	/^var Post = require('..\/models\/post');$/;"	v
 Post.get	models/post.js	/^Post.get = function get (pid,callback) {$/;"	f
 Post.getContent	models/post.js	/^Post.prototype.getContent = function getContent () {$/;"	m
+Post.getLists	models/post.js	/^Post.getLists = function  (query,callback) {$/;"	f
 Post.getMax	models/post.js	/^Post.getMax = function() {$/;"	f
 Post.save	models/post.js	/^Post.prototype.save = function save (callback) {$/;"	m
 Post.var.post.user	models/post.js	/^        user: this.user,$/;"	p
@@ -3296,6 +3297,7 @@ exports.tearDown	node_modules/mongodb/node_modules/kerberos/test/kerberos_win32_
 exports.tearDown	node_modules/mongodb/node_modules/kerberos/test/win32/security_buffer_descriptor_tests.js	/^exports.tearDown = function(callback) {$/;"	f
 exports.tearDown	node_modules/mongodb/node_modules/kerberos/test/win32/security_buffer_tests.js	/^exports.tearDown = function(callback) {$/;"	f
 exports.tearDown	node_modules/mongodb/node_modules/kerberos/test/win32/security_credentials_tests.js	/^exports.tearDown = function(callback) {$/;"	f
+exports.testlist	routes/index.js	/^exports.testlist = function  (res,req) {$/;"	f
 exports.times	node_modules/ejs/lib/filters.js	/^exports.times = function(a, b){$/;"	f
 exports.truncate	node_modules/ejs/lib/filters.js	/^exports.truncate = function(str, len, append){$/;"	f
 exports.truncate_words	node_modules/ejs/lib/filters.js	/^exports.truncate_words = function(str, n){$/;"	f

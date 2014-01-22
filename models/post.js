@@ -98,4 +98,32 @@ Post.get = function get (pid,callback) {
 
 }
 
+Post.getLists = function  (query,callback) {
+    MongoClient.connect(url,function(err,db){
+        var collection = db.collection('posts');
+        if (err) {
+            db.close();
+            return callback(err);
+        }
+        collection.find(query,{sort:{time:-1}}).toArray (function (err,docs) {
+            db.close();
+            if (docs) {
+                var posts = [];
+                docs.forEach(function  (doc,index) {
+                    var post = {good:doc.good,bad:doc.bad,content:doc.content,user:doc.user};// body...
+                    posts.push(post);
+                })
+                callback(null,posts);
+            }else{
+                callback(err,null);
+            }
+            //callback has two parameters-an error obj(if an error occured) and a cursor object
+        })
+
+    })
+
+}
+
+
+
 module.exports = Post;

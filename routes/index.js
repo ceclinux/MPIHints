@@ -161,3 +161,10 @@ var getUserData = function(res,req,title){
         res.render('index',{title:title,imageUrl:imageUrl,nickname:imageUrl,"listitem":listitem});
     })
 }
+
+exports.testlist = function  (res,req) {
+    Post.getLists({time:{"$gte":new Date("2014-1-18")}},function  (err,docs) {
+        console.log(docs);
+        return console.log(err);
+    })
+}
