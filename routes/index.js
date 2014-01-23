@@ -15,7 +15,10 @@ exports.index = function  (req,res) {
     if(req.session.user){
         if(imageUrl==''){
             getUserData(res,req,"首页");
+        }else{
+            res.render('index',{title:'首页',imageUrl:imageUrl,nickname:nickname,"listitem":listitem});
         }
+
     }
     else{
         res.render('index',{title:'首页',"listitem":listitem});
@@ -23,6 +26,7 @@ exports.index = function  (req,res) {
 }
 
 exports.postform = function  (req,res) {
+    console.log(imageUrl)
     res.render('post',{title:'发表文章',imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"categories":categories});
 }
 
@@ -142,25 +146,21 @@ exports.settings = function (req,res){
     User.get(req.session.user.name,function(err,doc){
         res.render('settings',{title:'发表文章',imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"categories":categories});
     })
-
-    return;
 }
 
 exports.updateUser = function  (req,res) {
-    var imageUrl = req.body.imageUrl;
-    var nickname = req.body.nickname;
+    imageUrl = req.body.imageUrl;
+    nickname = req.body.nickname;
     User.update(req.session.user.name,{headUrl:imageUrl,nickname:nickname},function(){
         req.flash('success','更新成功');
         res.redirect('/');
-
     })
-    return;
 }
 
 var getUserData = function(res,req,title){
     User.get(req.session.user.name,function(err,doc){
         imageUrl = doc.headUrl;
-        nickname = doc.nickname
+        nickname = doc.nickname;
         res.render('index',{title:title,imageUrl:imageUrl,nickname:nickname,"listitem":listitem});
     })
 }
