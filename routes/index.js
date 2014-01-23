@@ -140,9 +140,10 @@ exports.postContent = function  (req,res) {
 
 exports.settings = function (req,res){
     User.get(req.session.user.name,function(err,doc){
-        res.render('settings',{title:'发表文章',imageUrl:imageUrl,nickname:imageUrl,"listitem":listitem,"categories":categories});
-        return;
+        res.render('settings',{title:'发表文章',imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"categories":categories});
     })
+
+    return;
 }
 
 exports.updateUser = function  (req,res) {
@@ -150,15 +151,17 @@ exports.updateUser = function  (req,res) {
     var nickname = req.body.nickname;
     User.update(req.session.user.name,{headUrl:imageUrl,nickname:nickname},function(){
         req.flash('success','更新成功');
-        return res.redirect('/settings');
+        res.redirect('/');
+
     })
+    return;
 }
 
 var getUserData = function(res,req,title){
     User.get(req.session.user.name,function(err,doc){
         imageUrl = doc.headUrl;
         nickname = doc.nickname
-        res.render('index',{title:title,imageUrl:imageUrl,nickname:imageUrl,"listitem":listitem});
+        res.render('index',{title:title,imageUrl:imageUrl,nickname:nickname,"listitem":listitem});
     })
 }
 

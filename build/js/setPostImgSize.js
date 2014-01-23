@@ -1,0 +1,1 @@
+$(window).load(function(){for(var i=$(".postimage"),t=700,s=0;s<i.length;s++){var a=new Image;a.src=i.eq(s).attr("src"),a.width<t?i.eq(s).attr("width",a.width):i.eq(s).attr("width",t),i.eq(s).css("display","block").css("visibility","visible")}});
