@@ -110,7 +110,7 @@ Post.getLists = function  (query,callback) {
             if (docs) {
                 var posts = [];
                 docs.forEach(function  (doc,index) {
-                    var post = {good:doc.good,bad:doc.bad,content:doc.content,user:doc.user};// body...
+                    var post = {good:doc.good,bad:doc.bad,content:doc.content,user:doc.user,title:doc.title,pid:doc.pid};// body...
                     posts.push(post);
                 })
                 callback(null,posts);

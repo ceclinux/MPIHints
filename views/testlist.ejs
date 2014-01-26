@@ -1,0 +1,32 @@
+<% for(var i=0;i<post.length;i++) { %>
+<div>
+    <div class="col-xs-6 col-md-3">
+        <a href='/p/<%= post[i].pid %>' class="thumbnail">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td align="center"><div class="user-head"><img src=<%= post[i].userHead %> alt="..."></div></td></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><p><%= post[i].nickname %></p></td>
+                        </tr>
+                    </table>
+
+                    <td><div style="width:550px"><h3><%= post[i].title %></h3><%- post[i].content %></div></td>
+                    <td><span class="fui-heart-24"><span><span class="fui-heart-24"></span></span></td>
+                        <td>
+                            <table>
+                                <tbody><tr><td><span class="scoreup"><%= post[i].good %></span></td><td class="arrows"><a class="arrowup" title="这个好">&nbsp;</a></td></tr>
+                                    <tr><td><span class="scoredown"><%= post[i].bad %></span></td><td class="arrows"><a class="arrowdown" title="这个烂">&nbsp;</a></td></tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </a>
+        </div>
+    </div>
+
+    <% } %>

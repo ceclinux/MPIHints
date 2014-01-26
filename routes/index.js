@@ -165,9 +165,20 @@ var getUserData = function(res,req,title){
     })
 }
 
-exports.testlist = function  (res,req) {
+//para的顺序不能换
+//这段需要研究～
+exports.testlist = function  (req,res) {
+    var post=[];
     Post.getLists({time:{"$gte":new Date("2014-1-18")}},function  (err,docs) {
-        console.log(docs);
+        var i = 0;
+        docs.forEach(function(item,index,array){
+            User.get(item.user,function(err,doc){
+                //将图片从列表中删除（正则），需要排除最后出现<img .....没了的情况
+                post.push({nickname:doc.nickname,good:item.good,bad:item.bad,content:item.content.substr(0,80).replace(/<img[^>]*?>/g,'').replace(/<img[^>]*?$/,''),userHead:doc.headUrl,title:item.title,pid:item.pid});
+                if((++i)==array.length)
+                    res.render('testlist',{title:'发表文章',post:post,imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"categories":categories});
+            })
+        })
         return console.log(err);
     })
 }

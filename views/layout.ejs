@@ -103,12 +103,22 @@
                         <ul class="dropdown-menu">
 
                             <li><a href="#" class="thumbnail" style=" margin-bottom: 0px;background-color:#34495E !important;border-color:#34495E ">
-                                    <div class="user-head"><img src="<%= imageUrl %>" alt="..."><p><%= nickname %></p></div>
+                                    <table >
+                                        <tr>
+                                            <td align="center"><div class="user-head"><img src="<%= imageUrl %>" alt="..."></div>
+                                            </td>                    
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center"><p><%= nickname %></p></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
                                 </a>
                             </li>
                             <li><a href="/settings">设置</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">退出</a></li>
+                            <li><a href="/logout">退出</a></li>
                         </ul>
                     </li>
                     <% } %>

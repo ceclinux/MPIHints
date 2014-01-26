@@ -91,3 +91,18 @@ form>div{
     max-width:700px;
 }
 
+.arrowup {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 0px 3px 0px 3px;
+    background: url('../images/icn-arrows.png') no-repeat 0px 0px;
+}
+
+.arrowdown {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 0px 3px 0px 3px;
+    background: url('../images/icn-arrows.png') no-repeat 0px -48px;
+}
