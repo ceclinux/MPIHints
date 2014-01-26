@@ -121,9 +121,37 @@ Post.getLists = function  (query,callback) {
         })
 
     })
-
 }
 
+Post.increGoodByOne = function(pid){
+    MongoClient.connect(url,function(err,db){
+        var collection = db.collection('posts');
+        if (err) {
+            db.close();
+            return callback(err);
+        }
+        collection.update({pid:pid},{$inc:{good:1}},function (err,docs) {
+            db.close();
+            //callback has two parameters-an error obj(if an error occured) and a cursor object
+        })
 
+    })
+
+}
+Post.increBadByOne = function(pid){
+    MongoClient.connect(url,function(err,db){
+        var collection = db.collection('posts');
+        if (err) {
+            db.close();
+            return callback(err);
+        }
+        collection.update({pid:pid},{$inc:{bad:1}},function (err,docs) {
+            db.close();
+            //callback has two parameters-an error obj(if an error occured) and a cursor object
+        })
+
+    })
+
+}
 
 module.exports = Post;

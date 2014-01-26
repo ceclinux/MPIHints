@@ -169,7 +169,7 @@ var getUserData = function(res,req,title){
 //这段需要研究～
 exports.testlist = function  (req,res) {
     var post=[];
-    Post.getLists({time:{"$gte":new Date("2014-1-18")}},function  (err,docs) {
+    Post.getLists({time:{"$gte":new Date("2014-1-25")}},function  (err,docs) {
         var i = 0;
         docs.forEach(function(item,index,array){
             User.get(item.user,function(err,doc){
@@ -181,4 +181,16 @@ exports.testlist = function  (req,res) {
         })
         return console.log(err);
     })
+}
+
+exports.addCountGood = function (req,res){
+    var arr = req.url.split(/\//);
+        var pid = Number(arr[arr.length-2]);
+    Post.increGoodByOne(pid);
+}
+
+exports.addCountBad = function (req,res){
+    var arr = req.url.split(/\//);
+        var pid = Number(arr[arr.length-2]);
+    Post.increBadByOne(pid);
 }

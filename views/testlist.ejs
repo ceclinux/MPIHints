@@ -18,8 +18,8 @@
                     <td><span class="fui-heart-24"><span><span class="fui-heart-24"></span></span></td>
                         <td>
                             <table>
-                                <tbody><tr><td><span class="scoreup"><%= post[i].good %></span></td><td class="arrows"><a class="arrowup" title="这个好">&nbsp;</a></td></tr>
-                                    <tr><td><span class="scoredown"><%= post[i].bad %></span></td><td class="arrows"><a class="arrowdown" title="这个烂">&nbsp;</a></td></tr>
+                                <tbody><tr><td><span class="scoreup"><%= post[i].good %></span></td><td class="arrows"><a class="arrowup" href=<%= post[i].pid %>/good title="这个好">&nbsp;</a></td></tr>
+                                    <tr><td><span class="scoredown"><%= post[i].bad %></span></td><td class="arrows"><a class="arrowdown" href=<%= post[i].pid %>/bad title="这个烂">&nbsp;</a></td></tr>
                                 </tbody>
                             </table>
                         </td>
@@ -30,3 +30,18 @@
     </div>
 
     <% } %>
+    <script>           
+        function makevote(clas,attr,counter){
+            $(clas).click(function(event){
+                event.preventDefault();
+                $(counter).text(Number($(counter).text())+1);
+                var arr = this.href.split(/\//);
+                $.post('/'+arr[arr.length-2]+attr);
+            })
+        }
+
+        $(document).ready(function(){
+            makevote('.arrowup','/good','span.scoreup');
+            makevote('.arrowdown','/bad','span.scoredown');
+        })
+    </script>

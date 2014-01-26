@@ -95,6 +95,10 @@ app.get('/settings',routes.settings);
 app.post('/settings',routes.checkLogin);
 app.post('/settings',routes.updateUser);
 app.get('/test/:date',routes.testlist);
+app.post('/:pid/good',routes.checkLogin);
+app.post('/:pid/good',routes.addCountGood);
+app.post('/:pid/bad',routes.checkLogin);
+app.post('/:pid/bad',routes.addCountBad);
 
 //http://expressjs.com/api.html#app.listen
 ///**
