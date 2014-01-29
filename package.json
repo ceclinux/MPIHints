@@ -6,6 +6,10 @@
         "mongodb"          : "*",
         "gulp-minify-css"  : "*",
         "express-partials" : "*",
-        "connect-flash"    : "*"
+        "connect-flash"    : "*",
+        "tiny-lr"          : "*",
+        "gulp-livereload"  : "*",
+        "gulp-uglify"      : "*",
+        "gulp-imagemin"    : "*"
     }
 }
