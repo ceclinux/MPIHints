@@ -1,11 +1,11 @@
 {
-    "dependencies": {
-        "express": "*",
-        "ejs": "*",
-        "connect-mongo": "*",
-        "mongodb": "*",
-        "gulp-minify-css": "*",
-        "express-partials":"*",
-        "connect-flash":"*"
+    "dependencies"         : {
+        "express"          : "*",
+        "ejs"              : "*",
+        "connect-mongo"    : "*",
+        "mongodb"          : "*",
+        "gulp-minify-css"  : "*",
+        "express-partials" : "*",
+        "connect-flash"    : "*"
     }
 }

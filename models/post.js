@@ -2,14 +2,14 @@ var MongoClient = require('./db').MongoClient;
 var url = require('./db').url;
 
 function Post (username,content,title,tags,category,expire) {
-    this.user = username;
-    this.content = content;
-    this.good = 0;
-    this.bad = 0;
-    this.title = title;
-    this.tags = tags;
+    this.user     = username; 
+    this.content  = content;
+    this.good     = 0;
+    this.bad      = 0;
+    this.title    = title;
+    this.tags     = tags;
     this.category = category;
-    this.time = new Date();
+    this.time     = new Date();
     if (expire) {
         this.expire = new Date(expire.toString());
     }
@@ -30,7 +30,7 @@ Post.prototype.getContent = function getContent () {
     }
     return content;
 
-}
+};
 
 Post.prototype.save = function save (callback) {
 

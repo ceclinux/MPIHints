@@ -1,0 +1,5 @@
+MPIHints 是[Cecil](/u/ceclinux)搭建的论坛式网站，该网站主要的目的为帮助电脑系的学生交流，学习。
+
+论坛搭建的代码在[这里](http://github.com/ceclinux/MPIHints),欢迎同学贡献\(^o^)/~
+
+联系[src655@gmail.com](src655@gmail.com)![http://www.qq.com](http://guo.lu/wp-content/uploads/2013/08/after_the_adventure_by_albertoarni-d5x98la.jpg)

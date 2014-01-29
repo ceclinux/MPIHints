@@ -1,4 +1,4 @@
-require('newrelic')
+require('newrelic');
 //A single instance of Node runs in a single thread. To take advantage of multi-core systems the user will sometimes want to launch a cluster of Node processes to handle the load.
 var cluster = require('cluster');
 var os = require('os');
@@ -17,7 +17,7 @@ if (cluster.isMaster) {
         //fork -- create a clild process
         worker = cluster.fork();
         workers[workers.pid] = worker;
-    })
+    });
     //初始开启与CPU数量相同的工作进程
     for( var i = 0;i<numCPUs;i++){
         var worker = cluster.fork();
@@ -35,3 +35,4 @@ if (cluster.isMaster) {
 //    }
 //    process.exit(0);
 //});
+

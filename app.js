@@ -1,4 +1,4 @@
-var fs = require('fs');
+var fs = require('fs'); 
 // - Open file for appending. The file is created if it does not exist.
 var accessLogfile = fs.createWriteStream('access.log',{flags:'a'});
 var errorLogfile = fs.createWriteStream('error.log', {flags:'a'});
@@ -65,7 +65,7 @@ app.configure(function  () {
         res.locals.login = req.session.user;
         res.locals.url = req.url;
         next();
-    })
+    });
     app.use(app.router);
 });
 
@@ -99,6 +99,7 @@ app.post('/:pid/good',routes.checkLogin);
 app.post('/:pid/good',routes.addCountGood);
 app.post('/:pid/bad',routes.checkLogin);
 app.post('/:pid/bad',routes.addCountBad);
+app.get('/about',routes.about);
 
 //http://expressjs.com/api.html#app.listen
 ///**
