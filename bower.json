@@ -1,0 +1,8 @@
+{
+  "name"         : "MPIHints",
+  "private"      : false,
+  "dependencies" : {
+    "prismjs"    : "*"
+  },
+  "devDependencies": {}
+}

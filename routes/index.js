@@ -164,16 +164,19 @@ var getUserData = function(res,req,title){
 
 //para的顺序不能换
 //这段需要研究～
+//还有date问题也要回头仔细看
 exports.testlist = function  (req,res) {
     var post=[];
     var urlarr = req.params.date.split(/\//);
         var date = urlarr[urlarr.length-1];
     //substr 后面跟的参数是length
-    var year = date.substring(0,4);
-    var month = date.substring(4,6);
-    var day = date.substring(6,8);
-    var dateaf = year+'-'+month+'-'+day;
-    Post.getLists({time:{"$gte":new Date()}},function  (err,docs) {
+    var year = Number(date.substring(0,4));
+    var month = Number(date.substring(4,6))-1;
+    var day = Number(date.substring(6,8));
+    var dateaf = new Date(year,month,day);
+    var datebe = new Date(year,month,Number(day)+1);
+    Post.getLists({time:{"$gte":dateaf,"$lt":datebe}},function  (err,docs) {
+        console.log(datebe);
         var i = 0;
         docs.forEach(function(item,index,array){
             User.get(item.user,function(err,doc){
