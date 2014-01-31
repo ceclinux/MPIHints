@@ -174,7 +174,7 @@ exports.testlist = function  (req,res) {
     var month = Number(date.substring(4,6))-1;
     var day = Number(date.substring(6,8));
     var dateaf = new Date(year,month,day);
-    var datebe = new Date(year,month,Number(day)+1);
+    var datebe = new Date(year,month,day+1);
     Post.getLists({time:{"$gte":dateaf,"$lt":datebe}},function  (err,docs) {
         console.log(datebe);
         var i = 0;
@@ -182,13 +182,23 @@ exports.testlist = function  (req,res) {
             User.get(item.user,function(err,doc){
                 //将图片从列表中删除（正则），需要排除最后出现<img .....没了的情况
                 post.push({nickname:doc.nickname,good:item.good,bad:item.bad,content:item.content.substr(0,80).replace(/<img[^>]*?>/g,'').replace(/<img[^>]*?$/,''),userHead:doc.headUrl,title:item.title,pid:item.pid});
-                if((++i)==array.length)
+                if((++i)==array.length){
+post.sort(sortFunc);
                     res.render('testlist',{title:'发表文章',post:post,imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"categories":categories});
-            });
+            }});
         });
         return console.log(err);
     });
 };
+
+function sortFunc(before,after){
+    if(before.good!=after.good){
+        return (after.good-after.bad)-(before.good-before.bad);
+    }
+        var a = new Date(before.time);
+        var b = new Date(after.time);
+        return a<b?-1:1;
+}
 
 exports.addCountGood = function (req,res){
     var arr = req.url.split(/\//);

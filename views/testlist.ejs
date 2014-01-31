@@ -34,6 +34,7 @@
         function makevote(clas,attr,counter){
             $(clas).click(function(event){
                 event.preventDefault();
+                event.stopPropagation();
                 $(counter).text(Number($(counter).text())+1);
                 var arr = this.href.split(/\//);
                 $.post('/'+arr[arr.length-2]+attr);
