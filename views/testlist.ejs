@@ -31,18 +31,20 @@
 
     <% } %>
     <script>           
-        function makevote(clas,attr,counter){
+        function makevote(clas,attr){
             $(clas).click(function(event){
                 event.preventDefault();
                 event.stopPropagation();
-                $(counter).text(Number($(counter).text())+1);
+                //需要重写。。。
+                var counter= $(clas).eq(0).parent().parent().children(1).eq(0).children(0)
+                counter.text(Number(counter.text())+1);
                 var arr = this.href.split(/\//);
                 $.post('/'+arr[arr.length-2]+attr);
             })
         }
 
         $(document).ready(function(){
-            makevote('.arrowup','/good','span.scoreup');
-            makevote('.arrowdown','/bad','span.scoredown');
+            makevote('.arrowup','/good');
+            makevote('.arrowdown','/bad');
         })
     </script>

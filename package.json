@@ -7,9 +7,9 @@
         "gulp-minify-css"  : "*",
         "express-partials" : "*",
         "connect-flash"    : "*",
-        "tiny-lr"          : "*",
         "gulp-livereload"  : "*",
         "gulp-uglify"      : "*",
-        "gulp-imagemin"    : "*"
+        "gulp-imagemin"    : "*",
+        "async"            : "*"
     }
 }
