@@ -18,11 +18,5 @@ var checkText = function  (widgit,regex) {
         //表示输入框内错误，红色
         $(widgit).css('border-color','#e74c3c');
     }
-
 };
-
-$(document).ready(function(event){
-    setToolTip('input#username','div.tooltip.fade.top.in',/^\w{4,10}$/);
-    setToolTip('input#password','div.tooltip.fade.bottom.in',/^\w{8,14}$/);
-});
 

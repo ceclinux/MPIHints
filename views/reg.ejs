@@ -10,7 +10,7 @@
                 <div class="control-group">
 <div class="tooltip fade top in" style="top: -99px; left: 0px; display:
     block;visibility:hidden"><div class="tooltip-arrow"></div><div
-        class="tooltip-inner">用户名需要小于等于10个字符大于等于4个字符，不接受特殊符号</div></div>
+        class="tooltip-inner">输入图片的url，暂时不支持本地图片</div></div>
                     <input type="text" class="login-field" name="username" placeholder="Enter your name" id="username"  style="width:100%">
                     <label class="login-field-icon fui-man-16" for="login-name"></label>
                 </div>
@@ -23,7 +23,7 @@
                     style="visibility:hidden;margin-left:150px;right:99px;
                     left: 0px; display: block;"><div
                         class="tooltip-arrow"></div><div
-                        class="tooltip-inner">密码需要小于等于14个字符大于等于8个字符，不接受特殊符号</div></div>
+                        class="tooltip-inner">长度在3个到10个字符之间，推荐使用你的英文名字</div></div>
 
 <button type="submit" class="btn btn-default " style="margin-left:auto;margin-right:auto">注册</button>
 </form>
@@ -43,3 +43,9 @@
     <!--<div><button type="submit" class="btn btn-default " style="margin-left:auto;margin-right:auto">登录</button></div>-->
     <!--</form>-->
 <script src='/javascripts/ensureInput.js'></script>
+<script>
+$(document).ready(function(event){
+    setToolTip('input#username','div.tooltip.fade.top.in',/^\w{4,10}$/);
+    setToolTip('input#password','div.tooltip.fade.bottom.in',/^\w{8,14}$/);
+});
+</script>
