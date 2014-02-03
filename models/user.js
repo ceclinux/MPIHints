@@ -4,6 +4,8 @@ var url = require('./db').url;
 function User (user) {
     this.name = user.name;
     this.password = user.password;
+        headUrl:'/images/default-head.jpg';
+        nickname:this.name;
 };
 //这样可以直接返回User对象哦
 module.exports = User;

@@ -16,8 +16,10 @@ var months = {
     'Dec':12
 }
 
-function Post (username,content,title,tags,category,expire) {
+function Post (username,content,title,tags,category,expire,nickname,headUrl) {
     this.user     = username; 
+    this.nickname = nickname;
+    this.headUrl = headUrl;
     this.content  = content;
     this.good     = 0;
     this.bad      = 0;
@@ -58,7 +60,10 @@ Post.prototype.save = function save (callback) {
         tags:this.tags.split(/,|，/),
         category:this.category,
         title:this.title,
-        expire:this.expire
+        expire:this.expire,
+nickname:this.nickname,
+headUrl:this.headUrl
+
     }
 
     MongoClient.connect(url,function(err,db){
@@ -125,7 +130,7 @@ Post.getLists = function  (query,callback) {
             if (docs) {
                 var posts = [];
                 docs.forEach(function  (doc,index) {
-                    var post = {good:doc.good,bad:doc.bad,content:doc.content,user:doc.user,title:doc.title,pid:doc.pid};// body...
+                    var post = {good:doc.good,bad:doc.bad,content:doc.content,user:doc.user,title:doc.title,pid:doc.pid,nickname:doc.nickname,headUrl:doc.headUrl};// body...
                     posts.push(post);
                 })
                 callback(null,posts);

@@ -2,6 +2,7 @@
 <html>
     <head>
         <title><%= title %> -MPIHints</title>
+                
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
@@ -17,10 +18,8 @@
 
                 var evnts = function(){
                     return {
-                        "event":
-                            [
-                            {"date":"2014-02-01","title":"2"}
-                              ,{"date":"2014-03-22","title":"34"}
+                        "event": [
+                              {"date":"2014-03-22","title":"34"}
                               ,{"date":"2014-04-03","title":"123"}
                               ,{"date":"2014-05-04","title":"223"}
                               ,{"date":"2014-06-28","title":"4"}
@@ -33,7 +32,7 @@
                   ,{"date":"2014-05-03","title":"1500"}
                   ,{"date":"2014-05-04","title":"1501"}
                         ]
-                    }
+                                              }
                 };
 
                 $('#calendar').Calendar({ 'events': evnts, 'weekStart': 1 })

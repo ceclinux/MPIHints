@@ -9,6 +9,7 @@ var supply=['yamiedie','echo'];
 var categories = ['会计学原理','咨询系统实施','电子商务导论','数据仓库及数据采集','统计学II','英语IV'];
 var imageUrl = '';
 var nickname = '';
+var appointment = "[{date:'2014-2-11',title:'3'},{date:'2014-3-22',title:'4'}]";
 
 exports.index = function  (req,res) {
     //Render a view with a callback responding with the rendered string. When an error occurs next(err) is invoked internally. When a callback is provided both the possible error and rendered string are passed, and no automated response is performed.
@@ -16,12 +17,12 @@ exports.index = function  (req,res) {
         if(imageUrl===''){
             getUserData(res,req,"首页");
         }else{
-            res.render('index',{title:'首页',imageUrl:imageUrl,nickname:nickname,"listitem":listitem});
+            res.render('index',{title:'首页',imageUrl:imageUrl,nickname:nickname,"listitem":listitem,appointment:appointment});
         }
 
     }
     else{
-        res.render('index',{title:'首页',"listitem":listitem});
+        res.render('index',{title:'首页',"listitem":listitem,appointment:appointment});
     }
 };
 
@@ -112,7 +113,7 @@ exports.checkNotLogin = function  (req,res,next) {
 
 exports.post = function  (req,res) {
     var currentUser = req.session.user;
-    var post = new Post(currentUser.name,req.body.content,req.body.title,req.body.tag,req.body.category,req.body.expire);
+    var post = new Post(currentUser.name,req.body.content,req.body.title,req.body.tag,req.body.category,req.body.expire,currentUser.nickname,currentUser.headUrl);
     post.save(function  (err) {
         if (err) {
             req.flash('error',err);
@@ -158,7 +159,7 @@ var getUserData = function(res,req,title){
     User.get(req.session.user.name,function(err,doc){
         imageUrl = doc.headUrl;
         nickname = doc.nickname;
-        res.render('index',{title:title,imageUrl:imageUrl,nickname:nickname,"listitem":listitem});
+        res.render('index',{title:title,imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"appointment":appointment});
     });
 };
 
@@ -176,19 +177,13 @@ exports.testlist = function  (req,res) {
     var dateaf = new Date(year,month,day);
     var datebe = new Date(year,month,day+1);
     Post.getLists({time:{"$gte":dateaf,"$lt":datebe}},function  (err,docs) {
-        console.log(datebe);
         var i = 0;
-        docs.forEach(function(item,index,array){
-            User.get(item.user,function(err,doc){
+        docs.forEach(function(item){
                 //将图片从列表中删除（正则），需要排除最后出现<img .....没了的情况
-                post.push({nickname:doc.nickname,good:item.good,bad:item.bad,content:item.content.substr(0,80).replace(/<img[^>]*?>/g,'').replace(/<img[^>]*?$/,''),userHead:doc.headUrl,title:item.title,pid:item.pid});
-                if((++i)==array.length){
-post.sort(sortFunc);
+                post.push({nickname:item.nickname,good:item.good,bad:item.bad,content:item.content.substr(0,80).replace(/<img[^>]*?>/g,'').replace(/<img[^>]*?$/,''),userHead:item.headUrl,title:item.title,pid:item.pid});
+post.sort(sortFunc);})
                     res.render('testlist',{title:'发表文章',post:post,imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"categories":categories});
-            }});
-        });
-        return console.log(err);
-    });
+            });
 };
 
 function sortFunc(before,after){
