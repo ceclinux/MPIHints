@@ -13,26 +13,13 @@
         <script src="/javascripts/picker.time.js"></script>
         <script src="/javascripts/picker.date.js"></script>
         <script src="/plugins/bootstrap-calendar/bootstrap.calendar.js"></script>
+        <script src="/javascripts/event.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
 
-                var evnts = function(){
-                    return {
-                        "event": [
-                              {"date":"2014-03-22","title":"34"}
-                              ,{"date":"2014-04-03","title":"123"}
-                              ,{"date":"2014-05-04","title":"223"}
-                              ,{"date":"2014-06-28","title":"4"}
-                              ,{"date":"2014-07-28","title":"5"}
-                              ,{"date":"2014-08-16","title":"14"}
-                              ,{"date":"2014-09-21","title":"10"}
-                              ,{"date":"2014-10-21","title":"10"}
-                              ,{"date":"2014-11-21","title":"10"}
-                              ,{"date":"2014-12-21","title":"10"}
-                  ,{"date":"2014-05-03","title":"1500"}
-                  ,{"date":"2014-05-04","title":"1501"}
-                        ]
-                                              }
+               evnts = function(){
+                    return events;
+                        
                 };
 
                 $('#calendar').Calendar({ 'events': evnts, 'weekStart': 1 })
@@ -135,7 +122,8 @@
 
             <ul class="nav nav-pills nav-stacked  box" style="margin-top:30px"><div style="text-align:center">
                     <% if (login) { %>
-                    <a href="/post" class="btn btn-primary" role="button">发表一篇文章吧</a>               <% } else { %>
+                    <a href="/post" class="btn btn-primary"
+                        role="button">发表一个hints吧</a>               <% } else { %>
                     <a href="/login" class="btn btn-primary" role="button" style="margin-right:10px">登陆</a><a href="/reg" class="btn btn-primary" role="button">注册</a>
                     <% } %>
                 </div>

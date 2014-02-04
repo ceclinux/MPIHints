@@ -10,6 +10,7 @@
         "gulp-livereload"  : "*",
         "gulp-uglify"      : "*",
         "gulp-imagemin"    : "*",
-        "async"            : "*"
+        "async"            : "*",
+        "newrelic"         : "*"
     }
 }

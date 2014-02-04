@@ -4,8 +4,8 @@ var url = require('./db').url;
 function User (user) {
     this.name = user.name;
     this.password = user.password;
-        headUrl:'/images/default-head.jpg';
-        nickname:this.name;
+    this.headUrl='/images/default-head.jpg';
+  nickname=this.name;
 };
 //这样可以直接返回User对象哦
 module.exports = User;
@@ -56,6 +56,7 @@ User.get = function get (username,callback) {
         collection.findOne({name:username},function  (err,doc) {
             if (doc) {
                 //封装为User对象
+                console.log(doc);
                 callback(err,doc);
             }else{
                 callback(err,null);

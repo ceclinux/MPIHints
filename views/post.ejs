@@ -8,93 +8,108 @@
         <!--<div id="epiceditor" name="epiceditor" ></div>-->
         <!--<script>-->
             <!--var opts = {-->
-            <!--container: 'epiceditor',-->
-            <!--textarea: null,-->
-            <!--basePath: 'plugins',-->
-            <!--clientSideStorage: true,-->
-            <!--localStorageName: 'epiceditor',-->
-            <!--useNativeFullscreen: true,-->
-            <!--parser: marked,-->
-            <!--file: {-->
-            <!--name: 'plugins',-->
-            <!--defaultContent: '',-->
-            <!--autoSave: 100-->
-            <!--},-->
-            <!--theme: {-->
-            <!--base: '/epiceditor/themes/base/epiceditor.css',-->
-            <!--preview: '/epiceditor/themes/preview/preview-dark.css',-->
-            <!--editor: '/epiceditor/themes/editor/epic-dark.css'-->
-            <!--},-->
-            <!--button: {-->
-            <!--preview: true,-->
-            <!--fullscreen: true,-->
-            <!--bar: "auto"-->
-            <!--},-->
-            <!--focusOnLoad: false,-->
-            <!--shortcut: {-->
-            <!--modifier: 18,-->
-            <!--fullscreen: 70,-->
-            <!--preview: 80-->
-            <!--},-->
-            <!--string: {-->
-            <!--togglePreview: 'Toggle Preview Mode',-->
-            <!--toggleEdit: 'Toggle Edit Mode',-->
-            <!--toggleFullscreen: 'Enter Fullscreen'-->
-            <!--},-->
-            <!--autogrow: false-->
-            <!--}-->
-            <!--var editor = new EpicEditor(opts).load();-->
-            <!--$textarea = $('<input type="textarea" id="content" name="content" style="display:none">');-->
+                <!--container: 'epiceditor',-->
+                    <!--textarea: null,-->
+                    <!--basePath: 'plugins',-->
+                    <!--clientSideStorage: true,-->
+                    <!--localStorageName: 'epiceditor',-->
+                    <!--useNativeFullscreen: true,-->
+                    <!--parser: marked,-->
+                    <!--file: {-->
+                        <!--name: 'plugins',-->
+                            <!--defaultContent: '',-->
+                            <!--autoSave: 100-->
+                            <!--},-->
+                            <!--theme: {-->
+                                <!--base: '/epiceditor/themes/base/epiceditor.css',-->
+                                    <!--preview: '/epiceditor/themes/preview/preview-dark.css',-->
+                                    <!--editor: '/epiceditor/themes/editor/epic-dark.css'-->
+                                    <!--},-->
+                                    <!--button: {-->
+                                        <!--preview: true,-->
+                                            <!--fullscreen: true,-->
+                                            <!--bar: "auto"-->
+                                            <!--},-->
+                                            <!--focusOnLoad: false,-->
+                                            <!--shortcut: {-->
+                                                <!--modifier: 18,-->
+                                                    <!--fullscreen: 70,-->
+                                                    <!--preview: 80-->
+                                                    <!--},-->
+                                                    <!--string: {-->
+                                                        <!--togglePreview: 'Toggle Preview Mode',-->
+                                                            <!--toggleEdit: 'Toggle Edit Mode',-->
+                                                            <!--toggleFullscreen: 'Enter Fullscreen'-->
+                                                            <!--},-->
+                                                            <!--autogrow: false-->
+                                                            <!--}-->
+                                                            <!--var editor = new EpicEditor(opts).load();-->
+                                                            <!--$textarea = $('<input type="textarea" id="content" name="content" style="display:none">');-->
 
-            <!--$('#target').submit(function(event){-->
-            <!--event.preventDefault();-->
-            <!--$.post( "/post", { title: $('#title').val(), content: $(editor.getElement('previewer').body.innerHTML).html(), category: $('#category').val(),tag:$('#tag').val(),expire:$('#expire').val() } );-->
-            <!--})-->
-            <!--$('input#title').after($textarea);-->
+                                                            <!--$('#target').submit(function(event){-->
+                                                                <!--event.preventDefault();-->
+                                                                <!--$.post( "/post", { title: $('#title').val(), content: $(editor.getElement('previewer').body.innerHTML).html(), category: $('#category').val(),tag:$('#tag').val(),expire:$('#expire').val() } );-->
+                                                                <!--})-->
+                                                            <!--$('input#title').after($textarea);-->
 
-            <!--var markContent = $(editor.getElement('previewer').body.innerHTML).html();-->
+                                                            <!--var markContent = $(editor.getElement('previewer').body.innerHTML).html();-->
         <!--</script>-->
     <textarea class="form-control"  name="content" id="content" placeholder="内容写不完？这儿还可以写..." rows="25"></textarea>
 
+    <script src="/javascripts/event.js" ></script>
 </div>   
 <div>
     <table cellpadding="10">
         <tr>
-            <td> <label>选择学科</label>
+            <td> <label>选择日期</label>
             </td>
             <td>
-                <select class="form-control" style="display:inline" id="category" name="category">
-                    <% for(var i=0; i<categories.length; i++) { %>
-                    <option value='<%= i %>'>
-                    <%= categories[i] %>
-                    </option>
-                    <% } %>
-                </select>
-            </td>
-            <td>标签(tag)</td>
-            <td>
-                <input type="text" class="form-control" id="tag" name="tag">
-            </td>
-        </tr>
-        <script src="/javascripts/picker.js"></script>
-        <script src="/javascripts/picker.time.js"></script>
-        <script src="/javascripts/picker.date.js"></script>
-        <link href="/stylesheets/default.css" rel="stylesheet">
-        <link href="/stylesheets/default.date.css" rel="stylesheet">
-        <tr>
+                <select class="form-control" style="display:inline"
+                    id="expire" name="expire">
+                    <script>
+                        for(var i=0;i<events.event.length;i++){
+                            $('select#expire.form-control').append($('<option>').val(events.event[i].date).text(events.event[i].date))
+                        }
+                    </script>
+                </td>
+                <td>标签(tag)</td>
+                <td>
+                    <input type="text" class="form-control" id="tag" name="tag">
+                </td>
+            </tr>
+            <script src="/javascripts/picker.js"></script>
+            <script src="/javascripts/picker.time.js"></script>
+            <script src="/javascripts/picker.date.js"></script>
+            <link href="/stylesheets/default.css" rel="stylesheet">
+            <link href="/stylesheets/default.date.css" rel="stylesheet">
+            <tr>
 
-            <td><label for="">过期</label></td>
-            <td>
-                <input type="text" class="datepicker form-control" id="expire" name="expire">
-                <script>$('.datepicker').pickadate({
-                    selectYears: true,
-                    selectMonths: true
+                <td><label for="">学科</label></td>
+                <td>
+                    <select class="form-control" style="display:inline" id="category" name="category">
+                    </td>
+                    <td>
+                    </td>
+
+                </table>
+            </div>
+            <div><button type="submit" class="btn btn-default " style="margin-left:auto;margin-right:auto">提交</button></div>
+        </form>
+
+        <script>
+var clickexpire = function() {
+for(var i=0;i<events.event.length;i++){
+if($('select#expire').val()===events.event[i].date){
+var subjects=events.event[i].title.split(/,/);
+}
+}
+$("select#category").text('');
+console.log(subjects);
+                subjects.forEach(function(item){
+                    var index = Number(item);
+                    $('select#category').append($('<option>').val(index).text(categories[index]));
                 })
-                </script>
-            </td>
-
-        </table>
-    </div>
-    <div><button type="submit" class="btn btn-default " style="margin-left:auto;margin-right:auto">提交</button></div>
-</form>
-
+            }
+            clickexpire();
+            $("select#expire").not('.emptyMessage').click(clickexpire);
+        </script>

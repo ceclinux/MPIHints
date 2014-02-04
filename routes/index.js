@@ -158,6 +158,7 @@ exports.updateUser = function  (req,res) {
 var getUserData = function(res,req,title){
     User.get(req.session.user.name,function(err,doc){
         imageUrl = doc.headUrl;
+        console.log(doc);
         nickname = doc.nickname;
         res.render('index',{title:title,imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"appointment":appointment});
     });
