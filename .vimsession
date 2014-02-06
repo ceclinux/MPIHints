@@ -8,11 +8,16 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +76 views/post.ejs
-badd +1 public/javascripts/event.js
-badd +212 routes/index.js
+badd +22 views/testlist.ejs
+badd +19 views/postContent.ejs
+badd +7 routes/index.js
+badd +92 app.js
+badd +0 views/post.ejs
+badd +170 models/post.js
+badd +19 public/javascripts/event.js
+badd +10 models/db.js
 silent! argdel *
-edit public/javascripts/event.js
+edit views/postContent.ejs
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -27,12 +32,24 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 2 - ((1 * winheight(0) + 15) / 30)
+2
+normal zo
+3
+normal zo
+12
+normal zo
+13
+normal zo
+19
+normal zo
+19
+normal zo
+let s:l = 6 - ((5 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
-normal! 0
+6
+normal! 019l
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

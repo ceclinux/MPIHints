@@ -17,3 +17,5 @@ var events =   { 'event': [
   ]
 }
 
+exports.categories = categories;
+exports.events = events;

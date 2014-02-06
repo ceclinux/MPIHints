@@ -15,7 +15,12 @@
                 </td>
                 <td rowspan="2">   
                 </td>
-
+                <td rowspan="2" align="right" width="600px"><table>
+                        <tbody><tr><td><span class="scoreup"><%= post.good %></span></td><td class="arrows"><a class="arrowup" href=<%= post.pid %>/good title="这个好">&nbsp;</a></td></tr>
+                            <tr><td><span class="scoredown"><%= post.bad %></span></td><td class="arrows"><a class="arrowdown" href=<%= post.pid %>/bad title="这个烂">&nbsp;</a></td></tr>
+                        </tbody>
+                    </table>
+                </td>
             </tr>
             <tr>
                 <td>

@@ -6,7 +6,7 @@ var Post = require('../models/post');
  */
 var listitem=[{number:12,item:'fack'},{number:20,item:'you'}];
 var supply=['yamiedie','echo'];
-var categories = ['会计学原理','咨询系统实施','电子商务导论','数据仓库及数据采集','统计学II','英语IV'];
+var categories = require('../public/javascripts/event.js').categories;
 var imageUrl = '';
 var nickname = '';
 var appointment = "[{date:'2014-2-11',title:'3'},{date:'2014-3-22',title:'4'}]";
@@ -123,6 +123,7 @@ exports.post = function  (req,res) {
         res.redirect('/p/'+ Post.getMax());
     });
 
+
 };
 
 exports.postContent = function  (req,res) {
@@ -131,18 +132,14 @@ exports.postContent = function  (req,res) {
             req.flash('err','木有这篇文章哦');
         }
         post.category = categories[post.category];
-        User.get(post.user,function(err,doc){
-            post.headUrl = doc.headUrl;
-            post.nickname = doc.nickname;
             res.render('postContent',{title:'postContent',imageUrl:imageUrl,nickname:nickname,"listitem":listitem,post:post});
 
-        });
     });
 };
 
 exports.settings = function (req,res){
     User.get(req.session.user.name,function(err,doc){
-        res.render('settings',{title:'发表文章',imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"categories":categories});
+     res.render('settings',{title:'发表文章',imageUrl:imageUrl,nickname:nickname,"listitem":listitem,"categories":categories});
     });
 };
 
