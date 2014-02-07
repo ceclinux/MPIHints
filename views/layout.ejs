@@ -123,7 +123,11 @@
             <ul class="nav nav-pills nav-stacked  box" style="margin-top:30px"><div style="text-align:center">
                     <% if (login) { %>
                     <a href="/post" class="btn btn-primary"
-                        role="button">发表一个hints吧</a>               <% } else { %>
+                        style="margin-right:30px"
+                        role="button">发表一个hints吧</a>
+                    
+                    <% if(/\/p\//.test(url)){ %><a href="/post" class="btn btn-primary"
+                        role="button">回复</a>   <% } %>            <% } else { %>
                     <a href="/login" class="btn btn-primary" role="button" style="margin-right:10px">登陆</a><a href="/reg" class="btn btn-primary" role="button">注册</a>
                     <% } %>
                 </div>

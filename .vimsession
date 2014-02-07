@@ -8,14 +8,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +22 views/testlist.ejs
-badd +19 views/postContent.ejs
-badd +7 routes/index.js
-badd +92 app.js
-badd +0 views/post.ejs
-badd +170 models/post.js
-badd +19 public/javascripts/event.js
-badd +10 models/db.js
+badd +81 views/layout.ejs
+badd +171 routes/index.js
+badd +68 app.js
+badd +1 views/post.ejs
+badd +0 views/postContent.ejs
 silent! argdel *
 edit views/postContent.ejs
 set splitbelow splitright
@@ -38,18 +35,18 @@ normal zo
 normal zo
 12
 normal zo
-13
+137
 normal zo
-19
+137
 normal zo
-19
+138
 normal zo
-let s:l = 6 - ((5 * winheight(0) + 15) / 30)
+let s:l = 81 - ((26 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
-normal! 019l
+81
+normal! 017l
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

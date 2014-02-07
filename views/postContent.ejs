@@ -35,6 +35,89 @@
         </table>
     </div>
 </div>
+<div>
+
+<div class="box" style="margin-top:10px">
+<div class="box-header">
+<div class="pull-right">
+</div>
+<span id="comments">
+1</span> 回复
+</div>
+<div class="fix_cell" id="saywrap">
+<div id="clist">
+<article>
+<div class="cell hoverable reply" id="comment_988">
+<table border="0" cellpadding="5" cellspacing="0" width="100%">
+<tbody><tr>
+<td valign="top" width="48">
+<a href="http://wehoton.com/people/3" class="profile_link">
+    <div class="user-head">
+<img alt="hh medium avatar" class="medium_avatar" src="http://wehoton.com/uploads/avatar/3/03/3_avatar_middle.jpg">
+</div>
+</a>
+</td>
+<td width="10"></td>
+<td valign="top" width="auto">
+<div class="pull-right">
+ <div class="thank_area" id="thank_area_2017"><a href="#;" onclick="thankReply(2017);" class="thank">感谢</a></div>
+  <span class="snow" id="r1">
+<a href="#reply" class="clickable wehoton" data-mention="hh" onclick="replyOne('hh');"><img src="http://wehoton.com/static/common/images/reply.png"></a> #1</span>
+</div>
+<a href="http://wehoton.com/people/3" class="dark wehoton profile_link">hh</a>
+
+<span class="snow">&nbsp;&nbsp;35 分钟前  
+ 
+</span>
+<div class="sep5"></div>
+<div class="content reply_content">神乎其技 -作弊之神：江哥</div>
+
+<div class="pull-right">
+<!--一个认真的人-->
+</div>
+</td>
+</tr>
+<tr>
+    <td colspan="3"><p style="border-bottom:1px solid#e7e9ec"></p></td>
+</tr>
+<tr>
+<td valign="top" width="48">
+<a href="http://wehoton.com/people/3" class="profile_link">
+    <div class="user-head">
+<img alt="hh medium avatar" class="medium_avatar" src="http://wehoton.com/uploads/avatar/3/03/3_avatar_middle.jpg">
+</div>
+</a>
+</td>
+<td width="10"></td>
+<td valign="top" width="auto">
+<div class="pull-right">
+ <div class="thank_area" id="thank_area_2017"><a href="#;" onclick="thankReply(2017);" class="thank">感谢</a></div>
+  <span class="snow" id="r1">
+<a href="#reply" class="clickable wehoton" data-mention="hh" onclick="replyOne('hh');"><img src="http://wehoton.com/static/common/images/reply.png"></a> #1</span>
+</div>
+<a href="http://wehoton.com/people/3" class="dark wehoton profile_link">hh</a>
+
+<span class="snow">&nbsp;&nbsp;35 分钟前  
+ 
+</span>
+<div class="sep5"></div>
+<div class="content reply_content">神乎其技 -作弊之神：江哥</div>
+
+<div class="pull-right">
+<!--一个认真的人-->
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<textarea class="form-control" name="content" id="content"
+    rows="20" style="margin-top:20px"></textarea>
+</div>
 <div class="pagination">
     <ul>
         <li class="previous"><a href="#"><img src="../images/pager/previous.png"></a></li>
@@ -50,3 +133,21 @@
         <li class="next"><a href="#"><img src="../images/pager/next.png"></a></li>
     </ul>
 </div>
+ <script>           
+        function makevote(clas,attr){
+            $(clas).click(function(event){
+                event.preventDefault();
+                event.stopPropagation();
+                //需要重写。。。
+                var counter= $(clas).eq(0).parent().parent().children(1).eq(0).children(0)
+                counter.text(Number(counter.text())+1);
+                var arr = this.href.split(/\//);
+                $.post('/'+arr[arr.length-2]+attr);
+            })
+        }
+
+        $(document).ready(function(){
+            makevote('.arrowup','/good');
+            makevote('.arrowdown','/bad');
+        })
+    </script>
